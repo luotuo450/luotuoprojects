@@ -1,0 +1,177 @@
+/* 整体页面样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: #f0f8ff;
+    /* 淡蓝色背景，比 skyblue 更柔和 */
+    min-height: 100vh;
+    /* 确保页面至少占满视口高度 */
+    flex-direction: column;
+    /* 让内容垂直排列，便于布局 */
+    position: relative;
+    /* 为了让目录栏能相对定位 */
+}
+
+/* 导航栏样式 */
+.gd-container {
+    position: fixed;
+    left: 0;
+    width: 200px;
+    background: linear-gradient(to bottom, #007bffb5, #48ff00b5);
+    /* 从蓝色到黄色的线性渐变，从上往下过渡 */
+    top: 0;
+    bottom: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    /* 添加右侧阴影，增加立体感 */
+    transition: width 0.3s ease, right 0.3s ease;
+    /* 过渡效果，用于响应式变化及显示隐藏时更平滑 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* 让内容和固定图标上下分布且两端对齐 */
+}
+
+.gd-container.fixed {
+    right: 0;
+    /* 固定时显示在右侧 */
+}
+
+.gd-container:hover {
+    width: 250px;
+    /* 鼠标悬停时导航栏变宽，展示更多内容 */
+}
+
+.pin-icon-container {
+    align-self: flex-end;
+    /* 固定图标靠右对齐 */
+    cursor: pointer;
+    /* 鼠标指针变为手型，提示可点击 */
+}
+
+.pin-icon-container i {
+    color: white;
+    /* 图标颜色设为白色 */
+}
+
+.gd-container a {
+    display: block;
+    margin: 10px 0;
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s, transform 0.3s;
+    /* 增加变换效果过渡 */
+}
+
+.gd-container a:hover {
+    color: white;
+    transform: translateX(10px);
+    /* 鼠标悬停时链接文本向右移动一点，增加交互感 */
+}
+
+/* 主体内容区域样式 */
+.content {
+    margin-left: 220px;
+    padding: 20px;
+    box-sizing: border-box;
+    flex: 1;
+    /* 让内容区域占据剩余空间，实现自适应高度 */
+    background-color: white;
+    /* 白色背景，与导航栏区分开 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    /* 添加整体阴影，增加层次感 */
+    border-radius: 10px;
+    /* 圆角，使外观更柔和 */
+    margin-top: 30px;
+    /* 与顶部留一点距离 */
+    margin-bottom: 30px;
+    /* 与底部留一点距离 */
+    padding: 30px;
+    /* 增加内边距，让内容不那么紧凑 */
+}
+
+h1 {
+    background-color: #7fe66d;
+    /* 保持原绿色背景 */
+    padding: 10px 20px;
+    /* 增加左右内边距，使文字不贴边 */
+    margin: 0 0 20px 0;
+    border-radius: 5px;
+    /* 圆角，更美观 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* 添加阴影，更立体 */
+    text-align: center;
+    /* 标题居中显示 */
+}
+
+h3 {
+    margin-top: 40px;
+    color: #333;
+    /* 标题颜色改为深灰色，更稳重 */
+    border-bottom: 2px solid #ccc;
+    /* 底部添加下划线，区分不同部分 */
+    padding-bottom: 10px;
+}
+
+p,
+ul,
+ol {
+    line-height: 1.6;
+    color: #555;
+    /* 正文文本颜色改为深一点的灰色，更易读 */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    /* 加大图片上下边距，让布局更合理 */
+    border-radius: 5px;
+    /* 图片添加圆角 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* 图片添加阴影，更有质感 */
+    transition: transform 0.3s;
+    /* 增加图片缩放过渡效果 */
+}
+
+img:hover {
+    transform: scale(1.05);
+    /* 鼠标悬停时图片放大一点，增加交互效果 */
+}
+
+/* 图片标题样式 */
+.img-caption {
+    text-align: center;
+    font-size: 14px;
+    color: gray;
+    margin-top: 10px;
+}
+
+/* 警告提示样式 */
+.warning {
+    color: red;
+    font-weight: bold;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #ccc;
+    /* 分割线颜色改为浅灰色 */
+    margin: 40px 0;
+}
+
+footer {
+    font-size: 12px;
+    color: gray;
+    margin-top: 40px;
+    text-align: center;
+    /* 页脚文本居中显示 */
+    padding: 10px 0;
+}

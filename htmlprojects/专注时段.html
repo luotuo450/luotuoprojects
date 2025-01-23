@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>专注时段</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        color: white;
+        text-align: center;
+        padding: 50px;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h1 {
+        margin-bottom: 30px;
+        font-size: 48px;
+      }
+
+      #timer {
+        font-size: 64px;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      }
+
+      #message {
+        color: #ffcc00;
+        font-size: 28px;
+        margin-top: 20px;
+      }
+
+      button {
+        padding: 15px 30px;
+        font-size: 18px;
+        margin: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ff007a;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #ff2b86;
+      }
+
+      #history {
+        margin-top: 40px;
+        font-size: 18px;
+        color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>专注时段</h1>
+    <div id="timer">00:00:00</div>
+    <button id="start">开始计时</button>
+    <button id="stop">停止计时</button>
+    <button id="reset">重置今日计时</button>
+    <div id="message"></div>
+
+    <audio id="beepSound" src="beep.mp3"></audio>
+
+    <div id="history"></div>
+    <!-- 用于显示历史记录 -->
+
+    <script>
+      let timerInterval;
+      let elapsedTime = 0; // 用于记录已过的时间
+      let isTimerRunning = false; // 计时器状态
+      let mouseMovementTimer; // 鼠标移动计时器
+      const beepSound = document.getElementById("beepSound");
+      const today = new Date().toISOString().split("T")[0];
+
+      // 初始化历史记录
+      const historyData = JSON.parse(localStorage.getItem("historyData")) || {};
+      if (!historyData[today]) {
+        historyData[today] = 0; // 初始化今天的记录
+      }
+
+      function updateHistoryDisplay() {
+        const history = document.getElementById("history");
+        history.innerHTML = "<h2>过去7天专注时间记录</h2>";
+
+        let totalFocusTime = 0;
+        const days = Object.keys(historyData).slice(-7); // 获取最近7天的记录
+        days.forEach((date) => {
+          // 如果是今天，则跳过显示
+          if (date === today) return;
+
+          const time = historyData[date];
+          totalFocusTime += time;
+          history.innerHTML += `${date}: ${formatTime(time)}<br>`;
+        });
+
+        history.innerHTML += `<strong>前7天总专注时间: ${formatTime(
+          totalFocusTime
+        )}</strong>`;
+      }
+
+      function formatTime(seconds) {
+        const hours = String(Math.floor(seconds / 3600)).padStart(2, "0");
+        const minutes = String(Math.floor((seconds % 3600) / 60)).padStart(
+          2,
+          "0"
+        );
+        const secs = String(seconds % 60).padStart(2, "0");
+        return `${hours}:${minutes}:${secs}`;
+      }
+
+      if (localStorage.getItem("timerData")) {
+        const savedData = JSON.parse(localStorage.getItem("timerData"));
+        elapsedTime = savedData.time || 0; // 恢复之前的计时进度
+        if (savedData.date === today) {
+          updateTimerDisplay(); // 更新显示
+        }
+      }
+
+      function updateTimer() {
+        elapsedTime++;
+        updateTimerDisplay(); // 更新显示
+
+        localStorage.setItem(
+          "timerData",
+          JSON.stringify({ date: today, time: elapsedTime })
+        );
+
+        // 更新历史记录
+        historyData[today] = elapsedTime;
+        localStorage.setItem("historyData", JSON.stringify(historyData));
+        updateHistoryDisplay();
+      }
+
+      function updateTimerDisplay() {
+        document.getElementById("timer").textContent = formatTime(elapsedTime);
+      }
+
+      document.getElementById("start").addEventListener("click", function () {
+        if (!isTimerRunning) {
+          isTimerRunning = true;
+          timerInterval = setInterval(updateTimer, 1000);
+        }
+      });
+
+      document.getElementById("stop").addEventListener("click", function () {
+        if (isTimerRunning) {
+          clearInterval(timerInterval);
+          isTimerRunning = false;
+          beepSound.pause();
+          beepSound.currentTime = 0;
+        }
+      });
+
+      document.getElementById("reset").addEventListener("click", function () {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+        elapsedTime = 0;
+        updateTimerDisplay();
+        localStorage.removeItem("timerData");
+        updateHistoryDisplay(); // 更新显示历史记录
+        document.getElementById("message").textContent = "";
+        beepSound.pause();
+        beepSound.currentTime = 0;
+        historyData[today] = 0; // 重置今天的记录
+        localStorage.setItem("historyData", JSON.stringify(historyData));
+      });
+
+      document.addEventListener("mousemove", function () {
+        if (isTimerRunning) {
+          document.getElementById("message").textContent = "请专注写作业";
+          beepSound.play();
+          clearTimeout(mouseMovementTimer);
+          mouseMovementTimer = setTimeout(function () {
+            document.getElementById("message").textContent = "";
+            beepSound.pause();
+            beepSound.currentTime = 0;
+          }, 2000);
+        }
+      });
+
+      document.addEventListener("touchstart", function () {
+        if (isTimerRunning) {
+          document.getElementById("message").textContent = "请专注写作业";
+          beepSound.play();
+          clearTimeout(mouseMovementTimer);
+          mouseMovementTimer = setTimeout(function () {
+            document.getElementById("message").textContent = "";
+            beepSound.pause();
+            beepSound.currentTime = 0;
+          }, 2000);
+        }
+      });
+
+      document.addEventListener("mouseout", function () {
+        clearTimeout(mouseMovementTimer);
+        document.getElementById("message").textContent = "";
+        beepSound.pause();
+        beepSound.currentTime = 0;
+      });
+
+      updateHistoryDisplay(); // 初始化时更新显示历史记录
+    </script>
+  </body>
+</html>

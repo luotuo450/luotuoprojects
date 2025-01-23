@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"> <!-- 引入外部CSS文件 -->
+    <title>骆驼 | HTML5教学</title>
+</head>
+<body>
+    <div id="gd" class="gd-container"> <!-- 修改类名，用于整体样式控制 -->
+        <div class="pin-icon-container"> <!-- 固定图标容器 -->
+            <i class="fas fa-thumbtack"></i> <!-- 使用Font Awesome图标，需引入对应字体库 -->
+        </div>
+        <a href="#one">1.HTML介绍</a>
+        <a href="#vscode">2.使用VScode编写html</a>
+        <a href="#jsb">3.使用记事本编写html</a>
+        <a href="#mb">4.HTML模版</a>
+        <a href="#five">5.HTML段落</a>
+    </div>
+    <div class="content">
+        <h1>骆驼 | HTML5教学</h1>
+        <h3 id="one">1.HTML介绍</h3>
+        <ul>
+            <li>HTML是用来描述网页的一种语言</li>
+            <li>HTML是Hyper Text Markup Language的缩写,意思是超文本标记语言</li>
+            <li>HTML不是一种编程语言,而是一种标记语言</li>
+            <li>HTML使用标记标签来描述网页</li>
+            <li>HTML标签是成对出现的,有:&lt;开始标签&gt;和&lt;/结束标签&gt;</li>
+            <li>HTML文件的后缀是.htm或.html,两者之间没有区别</li>
+        </ul>
+
+        <h3 id="vscode">2.使用VScode编写html</h3>
+        <p class="warning">注意：如果你的电脑是Windows7以前(包括Windows7),就无法下载vscode，建议直接使用电脑自带的记事本来编写HTML文件</p>
+        <ol>
+            <li>打开VScode</li>
+            <li>新建一个文件夹</li>
+            <li>在文件夹中新建一个文件,文件名是index.html,(当你打开浏览器时,如果只输入文件夹路径,浏览器就会自动定位到文件夹中的index.html)</li>
+            <li>在文件中输入html时,会弹出一个代码提示框</li>
+            <li>选择html:5,然后按回车键,就会自动生成一个html模版(下一章讲解模版)</li>
+        </ol>
+        <p>开始愉快地写代码吧</p>
+        <a href="https://s11.ax1x.com/2024/01/21/pFVmftH.png" target="_blank"><img src="https://s11.ax1x.com/2024/01/21/pFVmftH.png" alt="加载失败" /></a>
+        <p class="img-caption">图2.1.1 VScode弹出代码提示框</p>
+        <h4>选择VScode作为HTML编辑器的好处就是里面有许多插件,下面将给大家介绍4款插件</h4>
+        <ol>
+            <li>Auto Close Tag:顾名思义,就是当你输入开始标签时，这款插件会帮你自动补全结束标签</li>
+            <a href="https://s1.ax1x.com/2023/08/10/pPmN39K.png" target="_blank"><img src="https://s1.ax1x.com/2023/08/10/pPmN39K.png" alt="加载失败" /></a>
+            <li>Auto Rename Tag:当你修改了开始(结束)标签的名称时，这个插件会自动修改结束(开始)标签的名称</li>
+            <a href="https://s1.ax1x.com/2023/08/10/pPmNGcD.png" target="_blank"><img src="https://s1.ax1x.com/2023/08/10/pPmNGcD.png" alt="加载失败" /></a>
+            <li>Live Preview:不需要打开浏览器,在VScode中打开HTML文件,点击右上角的<img src="https://s1.ax1x.com/2023/08/09/pPZR1US.png" alt="图标" />图标就可实时预览HTML文件在网页中显示的样子,效果如下</li>
+            <a href="https://s1.ax1x.com/2023/08/11/pPnk2Oe.png" target="_blank"><img src="https://s1.ax1x.com/2023/08/11/pPnk2Oe.png" alt="加载失败" /></a>
+            <li>open in browser:有时候我们的HTML必须用浏览器打开,比如说你写的网页中有一个链接跳转到www.baidu.com,由于www.baidu.com不属于你的本地文件,所以上一款插件也无能为力,这款插件只需要你先保存文件,然后在你编写HTML文件的窗口右键,选择open in default browser,就能直接在你的默认浏览器中打开HTML文件</li>
+            <a href="https://s1.ax1x.com/2023/08/11/pPnV3FA.png" target="_blank"><img src="https://s1.ax1x.com/2023/08/11/pPnV3FA.png" alt="加载失败" /></a>
+        </ol>
+
+        <h3 id="jsb">3.使用记事本编写html</h3>
+        <ul>
+            <li>在桌面上右键</li>
+            <li>选择新建</li>
+            <li>选择文本文档</li>
+            <li>将文件名的后缀改成.html或.htm</li>
+            <li>对着该文件右键</li>
+            <li>选择用记事本打开该文件</li>
+        </ul>
+        <p>最后,你就可以开始愉快地写代码了</p>
+
+        <h3 id="mb">4.html模版</h3>
+        <p>由于有些人的电脑无法下载vscode,我这里把vscode生成的模版给大家放出来,给大家逐行解析</p>
+        <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title>Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+        </pre>
+        <p>首先,我们看第一行,&lt;!DOCTYPE html&gt;是使用最新版HTML的文档声明,目前最新版是HTML5</p>
+        <p>第二行&lt;html lang="en"&gt;是HTML5的根标签,html的所有内容都要写在&lt;html&gt;&lt;/html&gt;标签里,lang属性是用来指定当前文档的语言,en是英文,zh-CN是中文,其实这个lang属性是给搜索引擎判断你的网页是中文还是英文,以便用户找到适合自己阅读的网站,所以如果你写的网站不是纯英文的话,把这里改成&lt;html lang="zh-CN"&gt;</p>
+        <p>第三行是&lt;head&gt;,里面写的是网页的头部信息,比如编码格式什么的</p>
+        <p>第四行 &lt;meta charset="UTF-8"&gt; 是HTML5的meta标签,charset属性是用来指定当前文档的字符集,UTF-8是包含所有语言的编码,如果没有什么特殊需求都用UTF-8</p>
+        <p>
+            第五行:
+            1、name属性值viewport表示视口，不仅匹配PC端，也可匹配移动端。</br>
+            2、content属性值：</br>
+            （1）width：可视区域的宽度，值可为数字或关键词</br>
+            （2）device-width:设备屏幕的物理宽度</br>
+            （3）intial-scale:页面首次被显示是可视区域的缩放级别，取值1.0则页面按实际尺寸显示，无任何缩放</br>
+            扩展:</br>
+            height:可视区域的高度</br>
+            maximum-scale:允许用户缩放的最大比例</br>
+            minimum-scale:允许用户缩放的最小比例</br>
+            user-scalable:是否允许用户缩放,no 表示禁止缩放,yes代表允许</br>
+        </p>
+        <p>第六行是&lt;title&gt;Document&lt;/title&gt;,title标签是用来指定当前页面的标题,这个标题会显示在浏览器的标题栏里,比如百度首页的标题就是<img src="https://s1.ax1x.com/2023/08/09/pPZhWbq.png" alt="百度一下,你就知道" /></p>
+        <p>第七行是&lt;/head&gt;,表示头部信息结束</p>
+        <p>第八行是&lt;body&gt;,表示网页的主体部分</p>
+        <p>第十行是&lt;/body&gt;,表示网页的主体部分结束</p>
+        <p>第十一行是&lt;/html&gt;,表示整个网页结束</p>
+        <p class="warning">注意:</br>
+            1、标签名和属性值尽量小写</br>
+            2、标签尽量正确关闭</br>
+            3、标签尽量正确嵌套</br>
+            我说尽量是因为即使你不这样做浏览器也能正确解析,但是在XHTML中是不符合规范的,养成良好的写代码习惯总是不会有坏处的
+        </p>
+        <p>什么是XHTML？点击<a href="https://www.runoob.com/html/html-xhtml.html" target="_blank">这里</a>查看XHTML简介和语法</p>
+
+        <h3 id="five">5.HTML段落</h3>
+        <p>在HTML中,最常见也是最普通的输出标签就是&lt;p&gt;标签,里面的文字正常输出,但是里面的HTML标签会被解析</p>
+        <p>你可以在你的HTML文件的body标签里输入&lt;p&gt;hello world&lt;/p&gt;,然后保存文件,在浏览器中打开该文件(或者使用VScode插件Live Preview),然后你就能在界面中看到hello world,您也可以<a href="p.html">亲自试一试</a></p>
+
+        <hr />
+        <footer>
+            <p class="warning">该网站仍在开发中,更新时间2023/8/11</p>
+            <p>&copy;该网站版权归我所有,禁止转载,如果你对我的网站有一些建议,请点击<a href="mailto:1153432805@qq.com">这里</a>给出你的建议</p>
+        </footer>
+    </div>
+    <script>
+        // JavaScript代码用于控制目录栏的固定和隐藏显示功能
+        const gd = document.getElementById('gd');
+        const pinIcon = document.querySelector('.pin-icon-container.fas');
+
+        pinIcon.addEventListener('click', function () {
+            gd.classList.toggle('fixed');
+            if (gd.classList.contains('fixed')) {
+                gd.style.right = '0'; // 固定时显示在右侧
+            } else {
+                gd.style.right = '-200px'; // 隐藏时移到屏幕外
+            }
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            if (!gd.classList.contains('fixed')) {
+                const rect = gd.getBoundingClientRect();
+                const x = e.clientX;
+                if (x < 10 && rect.right < 0) { // 鼠标靠近左边缘且目录栏隐藏时显示
+                    gd.style.right = '0';
+                } else if (x > 10 && rect.right >= 0) { // 鼠标离开左边缘且目录栏显示时隐藏
+                    gd.style.right = '-200px';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

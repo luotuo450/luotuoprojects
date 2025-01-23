@@ -1,0 +1,66 @@
+/* 整体页面样式，保持与之前网页类似的淡蓝色柔和背景以及垂直布局等风格 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f8ff;
+    min-height: 100vh;
+}
+
+/* 文本输入框样式 */
+textarea#input {
+    width: 80%;
+    margin: 20px auto;
+    /* 水平居中 */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* 圆角 */
+    padding: 15px;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* 增加阴影，更有立体感 */
+    resize: vertical;
+    /* 允许垂直方向调整大小 */
+    background-color: white;
+    /* 白色背景 */
+}
+
+/* 按钮样式 */
+button {
+    display: block;
+    margin: 10px auto;
+    /* 水平居中 */
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #7fe66d;
+    /* 与之前网页标题背景色类似的绿色，保持风格统一 */
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* 阴影效果 */
+    transition: background-color 0.3s;
+    /* 过渡效果，鼠标悬停时背景色变化更平滑 */
+}
+
+button:hover {
+    background-color: #63c953;
+    /* 鼠标悬停时按钮颜色稍变深一点 */
+}
+
+/* 预览区域样式 */
+#preview {
+    width: 80%;
+    margin: 20px auto;
+    /* 水平居中 */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    /* 阴影效果 */
+    background-color: white;
+    /* 白色背景 */
+}

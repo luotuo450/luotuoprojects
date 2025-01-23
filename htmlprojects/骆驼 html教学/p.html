@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles_p.css"> <!-- 引入外部CSS文件 -->
+    <title>骆驼 | 在线HTML编译器</title>
+</head>
+<body>
+    <textarea id="input" rows="15" cols="60">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>p标签</title>
+</head>
+<body>
+    <p>hello world</p>
+</body>
+</html>
+    </textarea><br>
+    <button onclick="preview()">运行</button>
+    <div id="preview"></div>
+    <script>
+        function preview() {
+            var input = document.getElementById("input").value;
+            var preview = document.getElementById("preview");
+            preview.innerHTML = input;
+        }
+    </script>
+</body>
+</html>

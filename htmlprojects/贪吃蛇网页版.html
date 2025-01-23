@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>贪吃蛇游戏</title>
+    <style>
+        canvas {
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #000;
+            height: 700px;
+            width: 700px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const box = 10;
+        let snake = [{ x: 10, y: 10 }];
+        let food = { x: 15, y: 15 };
+        let dX = 0,
+            dY = 0;
+        let gameLoop;
+        let gameOver = false;
+        let directionQueue = []; // 方向队列
+        let score = 0; // 新增分数变量
+
+        // 初始化游戏
+        function init() {
+            snake = [{ x: 10, y: 10 }];
+            food = { x: 15, y: 15 };
+            dX = 0;
+            dY = 0;
+            gameOver = false;
+            directionQueue = [];
+            score = 0; // 重置分数
+            if (gameLoop) clearInterval(gameLoop);
+            gameLoop = setInterval(() => {
+                update();
+                draw();
+            }, 100);
+        }
+
+        // 绘制游戏元素
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            snake.forEach((segment, index) => {
+                const gradient = ctx.createLinearGradient(
+                    segment.x * box,
+                    segment.y * box,
+                    (segment.x + 1) * box,
+                    (segment.y + 1) * box
+                );
+                gradient.addColorStop(0, "green");
+                gradient.addColorStop(1, index === 0 ? "darkgreen" : "lightgreen");
+                ctx.fillStyle = gradient;
+                ctx.fillRect(segment.x * box, segment.y * box, box, box);
+            });
+            if (snake.length > 0) {
+                const head = snake[0];
+                ctx.fillStyle = "black";
+                ctx.beginPath();
+                ctx.arc(
+                    (head.x + 0.3) * box,
+                    (head.y + 0.3) * box,
+                    box / 10,
+                    0,
+                    Math.PI * 2
+                );
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(
+                    (head.x + 0.7) * box,
+                    (head.y + 0.3) * box,
+                    box / 10,
+                    0,
+                    Math.PI * 2
+                );
+                ctx.fill();
+            }
+            ctx.fillStyle = "red";
+            ctx.fillRect(food.x * box, food.y * box, box, box);
+
+            // 绘制分数
+            ctx.fillStyle = "black";
+            ctx.font = "20px Arial";
+            ctx.fillText("分数: " + score, 10, 25);
+        }
+
+        // 更新游戏状态
+        function update() {
+            // 从方向队列中获取下一个方向
+            if (directionQueue.length > 0) {
+                const nextDirection = directionQueue.shift();
+                dX = nextDirection.dX;
+                dY = nextDirection.dY;
+            }
+
+            const head = { x: snake[0].x + dX, y: snake[0].y + dY };
+            snake.unshift(head);
+            if (head.x === food.x && head.y === food.y) {
+                food = {
+                    x: Math.floor(Math.random() * (canvas.width / box)),
+                    y: Math.floor(Math.random() * (canvas.height / box)),
+                };
+                score += 1; // 更新分数
+            } else {
+                snake.pop();
+            }
+            if (
+                head.x < 0 ||
+                head.x >= canvas.width / box ||
+                head.y < 0 ||
+                head.y >= canvas.height / box
+            ) {
+                gameOver = true;
+                alert("游戏结束，按下空格键或点击屏幕继续游戏");
+                clearInterval(gameLoop);
+            }
+            // 检测蛇头是否撞到身体
+            for (let i = 1; i < snake.length; i++) {
+                if (head.x === snake[i].x && head.y === snake[i].y) {
+                    gameOver = true;
+                    alert("游戏结束，按下空格键或点击屏幕继续游戏");
+                    clearInterval(gameLoop);
+                    break;
+                }
+            }
+        }
+
+        // 处理键盘事件
+        document.addEventListener("keydown", (e) => {
+            if (gameOver && e.code === "Space") {
+                init();
+            } else if (e.key === "ArrowUp" && dY !== 1) {
+                directionQueue = directionQueue.filter((dir) => dir.dY !== 1); // 移除相反方向
+                directionQueue.push({ dX: 0, dY: -1 });
+            } else if (e.key === "ArrowDown" && dY !== -1) {
+                directionQueue = directionQueue.filter((dir) => dir.dY !== -1); // 移除相反方向
+                directionQueue.push({ dX: 0, dY: 1 });
+            } else if (e.key === "ArrowLeft" && dX !== 1) {
+                directionQueue = directionQueue.filter((dir) => dir.dX !== 1); // 移除相反方向
+                directionQueue.push({ dX: -1, dY: 0 });
+            } else if (e.key === "ArrowRight" && dX !== -1) {
+                directionQueue = directionQueue.filter((dir) => dir.dX !== -1); // 移除相反方向
+                directionQueue.push({ dX: 1, dY: 0 });
+            }
+        });
+
+        // 添加触摸事件监听器
+        canvas.addEventListener("touchstart", handleTouchStart);
+        canvas.addEventListener("touchmove", handleTouchMove);
+        canvas.addEventListener("touchend", handleTouchEnd);
+        let touchStartX, touchStartY;
+
+        // 处理触摸开始事件
+        function handleTouchStart(e) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }
+
+        // 处理触摸移动事件
+        function handleTouchMove(e) {
+            if (!touchStartX || !touchStartY) return;
+            const touchEndX = e.touches[0].clientX;
+            const touchEndY = e.touches[0].clientY;
+            const dx = touchEndX - touchStartX;
+            const dy = touchEndY - touchStartY;
+
+            if (Math.abs(dx) > Math.abs(dy)) {
+                // 水平滑动
+                if (dx > 0 && dX !== -1) {
+                    directionQueue = directionQueue.filter((dir) => dir.dX !== -1); // 移除相反方向
+                    directionQueue.push({ dX: 1, dY: 0 });
+                } else if (dx < 0 && dX !== 1) {
+                    directionQueue = directionQueue.filter((dir) => dir.dX !== 1); // 移除相反方向
+                    directionQueue.push({ dX: -1, dY: 0 });
+                }
+            } else {
+                // 垂直滑动
+                if (dy > 0 && dY !== -1) {
+                    directionQueue = directionQueue.filter((dir) => dir.dY !== -1); // 移除相反方向
+                    directionQueue.push({ dX: 0, dY: 1 });
+                } else if (dy < 0 && dY !== 1) {
+                    directionQueue = directionQueue.filter((dir) => dir.dY !== 1); // 移除相反方向
+                    directionQueue.push({ dX: 0, dY: -1 });
+                }
+            }
+            touchStartX = null;
+            touchStartY = null;
+        }
+
+        // 处理触摸结束事件
+        function handleTouchEnd(e) {
+            if (gameOver) {
+                init();
+            }
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

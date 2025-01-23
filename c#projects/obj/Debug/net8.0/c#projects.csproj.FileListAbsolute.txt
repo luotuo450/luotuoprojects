@@ -1,0 +1,14 @@
+D:\luotuoprojects\c#projects\bin\Debug\net8.0\c#projects.exe
+D:\luotuoprojects\c#projects\bin\Debug\net8.0\c#projects.deps.json
+D:\luotuoprojects\c#projects\bin\Debug\net8.0\c#projects.runtimeconfig.json
+D:\luotuoprojects\c#projects\bin\Debug\net8.0\c#projects.dll
+D:\luotuoprojects\c#projects\bin\Debug\net8.0\c#projects.pdb
+D:\luotuoprojects\c#projects\obj\Debug\net8.0\c#projects.GeneratedMSBuildEditorConfig.editorconfig
+D:\luotuoprojects\c#projects\obj\Debug\net8.0\c#projects.AssemblyInfoInputs.cache
+D:\luotuoprojects\c#projects\obj\Debug\net8.0\c#projects.AssemblyInfo.cs
+D:\luotuoprojects\c#projects\obj\Debug\net8.0\c#projects.csproj.CoreCompileInputs.cache
+D:\luotuoprojects\c#projects\obj\Debug\net8.0\c#projects.dll
+D:\luotuoprojects\c#projects\obj\Debug\net8.0\refint\c#projects.dll
+D:\luotuoprojects\c#projects\obj\Debug\net8.0\c#projects.pdb
+D:\luotuoprojects\c#projects\obj\Debug\net8.0\c#projects.genruntimeconfig.cache
+D:\luotuoprojects\c#projects\obj\Debug\net8.0\ref\c#projects.dll

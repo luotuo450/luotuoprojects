@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://china-testing.github.io/python_pep8.html -->
+<html lang="cn" data-darkreader-mode="dynamic" data-darkreader-scheme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, img.Wirisformula {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}
+[data-darkreader-inline-bg] {
+  background: var(--darkreader-inline-bg) !important;
+}
+[data-darkreader-inline-invert] {
+    filter: invert(100%) hue-rotate(180deg);
+}</style><style class="darkreader darkreader--variables" media="screen">:root {
+   --darkreader-neutral-background: #181a1b;
+   --darkreader-neutral-text: #e8e6e3;
+   --darkreader-selection-background: #004daa;
+   --darkreader-selection-text: #e8e6e3;
+}</style><style class="darkreader darkreader--root-vars" media="screen"></style><style class="darkreader darkreader--user-agent" media="screen">@layer {
+html {
+    background-color: #181a1b !important;
+}
+html {
+    color-scheme: dark !important;
+}
+iframe {
+    color-scheme: initial;
+}
+html, body {
+    background-color: #181a1b;
+}
+html, body {
+    border-color: #736b5e;
+    color: #e8e6e3;
+}
+a {
+    color: #3391ff;
+}
+table {
+    border-color: #545b5e;
+}
+mark {
+    color: #e8e6e3;
+}
+::placeholder {
+    color: #b2aba1;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #404400 !important;
+    color: #e8e6e3 !important;
+}
+::-webkit-scrollbar {
+    background-color: #202324;
+    color: #aba499;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #454a4d;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #575e62;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #484e51;
+}
+::-webkit-scrollbar-corner {
+    background-color: #181a1b;
+}
+::selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}
+::-moz-selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}
+}</style>
+        
+        <title>python代码风格指南(PEP8中文版)</title>
+        <link rel="stylesheet" href="./python代码风格指南(PEP8中文版)_files/main.css"><style class="darkreader darkreader--cors" media="screen">html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	background: transparent;
+	border: 0;
+	font-size: 100%;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+
+body {line-height: 1;}
+
+ol, ul {list-style: none;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+
+:focus {
+	outline: 0;
+}
+
+
+ins {text-decoration: none;}
+del {text-decoration: line-through;}
+
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.hll {
+background-color:#eee;
+}
+.c {
+color:#408090;
+font-style:italic;
+}
+.err {
+border:1px solid #FF0000;
+}
+.k {
+color:#007020;
+font-weight:bold;
+}
+.o {
+color:#666666;
+}
+.cm {
+color:#408090;
+font-style:italic;
+}
+.cp {
+color:#007020;
+}
+.c1 {
+color:#408090;
+font-style:italic;
+}
+.cs {
+background-color:#FFF0F0;
+color:#408090;
+}
+.gd {
+color:#A00000;
+}
+.ge {
+font-style:italic;
+}
+.gr {
+color:#FF0000;
+}
+.gh {
+color:#000080;
+font-weight:bold;
+}
+.gi {
+color:#00A000;
+}
+.go {
+color:#303030;
+}
+.gp {
+color:#C65D09;
+font-weight:bold;
+}
+.gs {
+font-weight:bold;
+}
+.gu {
+color:#800080;
+font-weight:bold;
+}
+.gt {
+color:#0040D0;
+}
+.kc {
+color:#007020;
+font-weight:bold;
+}
+.kd {
+color:#007020;
+font-weight:bold;
+}
+.kn {
+color:#007020;
+font-weight:bold;
+}
+.kp {
+color:#007020;
+}
+.kr {
+color:#007020;
+font-weight:bold;
+}
+.kt {
+color:#902000;
+}
+.m {
+color:#208050;
+}
+.s {
+color:#4070A0;
+}
+.na {
+color:#4070A0;
+}
+.nb {
+color:#007020;
+}
+.nc {
+color:#0E84B5;
+font-weight:bold;
+}
+.no {
+color:#60ADD5;
+}
+.nd {
+color:#555555;
+font-weight:bold;
+}
+.ni {
+color:#D55537;
+font-weight:bold;
+}
+.ne {
+color:#007020;
+}
+.nf {
+color:#06287E;
+}
+.nl {
+color:#002070;
+font-weight:bold;
+}
+.nn {
+color:#0E84B5;
+font-weight:bold;
+}
+.nt {
+color:#062873;
+font-weight:bold;
+}
+.nv {
+color:#BB60D5;
+}
+.ow {
+color:#007020;
+font-weight:bold;
+}
+.w {
+color:#BBBBBB;
+}
+.mf {
+color:#208050;
+}
+.mh {
+color:#208050;
+}
+.mi {
+color:#208050;
+}
+.mo {
+color:#208050;
+}
+.sb {
+color:#4070A0;
+}
+.sc {
+color:#4070A0;
+}
+.sd {
+color:#4070A0;
+font-style:italic;
+}
+.s2 {
+color:#4070A0;
+}
+.se {
+color:#4070A0;
+font-weight:bold;
+}
+.sh {
+color:#4070A0;
+}
+.si {
+color:#70A0D0;
+font-style:italic;
+}
+.sx {
+color:#C65D09;
+}
+.sr {
+color:#235388;
+}
+.s1 {
+color:#4070A0;
+}
+.ss {
+color:#517918;
+}
+.bp {
+color:#007020;
+}
+.vc {
+color:#BB60D5;
+}
+.vg {
+color:#BB60D5;
+}
+.vi {
+color:#BB60D5;
+}
+.il {
+color:#208050;
+}
+.caps {font-size:.92em;}
+.amp {color:#666; font-size:1.05em;font-family:"Warnock Pro", "Goudy Old Style","Palatino","Book Antiqua",serif; font-style:italic;}
+.dquo {margin-left:-.38em;}
+
+
+
+
+body {
+    background: #F5F4EF;
+    color: #000305;
+    font-size: 87.5%; 
+    font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 1.429;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+
+h1 {font-size: 2em }
+h2 {font-size: 1.571em}	
+h3 {font-size: 1.429em}	
+h4 {font-size: 1.286em}	
+h5 {font-size: 1.143em}	
+h6 {font-size: 1em}		
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 400;
+	line-height: 1.1;
+	margin-bottom: .8em;
+    font-family: 'Yanone Kaffeesatz', arial, serif;
+}
+
+h3, h4, h5, h6 { margin-top: .8em; }
+
+hr { border: 2px solid #EEEEEE; }
+
+
+a {outline: 0;}
+a img {border: 0px; text-decoration: none;}
+a:link, a:visited {
+	color: #C74350;
+	padding: 0 1px;
+	text-decoration: underline;
+}
+a:hover, a:active {
+	background-color: #C74350;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: 1px 1px 1px #333;
+}
+
+h1 a:hover {
+    background-color: inherit
+}
+
+
+div.line-block,
+p { margin-top: 1em;
+    margin-bottom: 1em;}
+
+strong, b {font-weight: bold;}
+em, i {font-style: italic;}
+
+
+ul {
+	list-style: outside disc;
+	margin: 0em 0 0 1.5em;
+}
+
+ol {
+	list-style: outside decimal;
+	margin: 0em 0 0 1.5em;
+}
+
+li { margin-top: 0.5em;
+     margin-bottom: 1em; }
+
+.post-info {
+    float:right;
+    margin:10px;
+    padding:5px;
+}
+
+.post-info p{
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.readmore { float: right }
+
+dl {margin: 0 0 1.5em 0;}
+dt {font-weight: bold;}
+dd {margin-left: 1.5em;}
+
+pre{background-color:  rgb(238, 238, 238); padding: 10px; margin: 10px; overflow: auto;}
+
+
+blockquote {
+    margin: 20px;
+    font-style: italic;
+}
+cite {}
+
+q {}
+
+div.note {
+   float: right;
+   margin: 5px;
+   font-size: 85%;
+   max-width: 300px;
+}
+
+
+table {margin: .5em auto 1.5em auto; width: 98%;}
+
+	
+	thead th {padding: .5em .4em; text-align: left;}
+	thead td {}
+
+	
+	tbody td {padding: .5em .4em;}
+	tbody th {}
+
+	tbody .alt td {}
+	tbody .alt th {}
+
+	
+	tfoot th {}
+	tfoot td {}
+
+
+header, section, footer,
+aside, nav, article, figure {
+	display: block;
+}
+
+
+.body {clear: both; margin: 0 auto; width: 800px;}
+img.right, figure.right {float: right; margin: 0 0 2em 2em;}
+img.left, figure.left {float: left; margin: 0 2em 2em 0;}
+
+
+#banner {
+	margin: 0 auto;
+	padding: 2.5em 0 0 0;
+}
+
+	
+	#banner h1 {font-size: 3.571em; line-height: 0;}
+	#banner h1 a:link, #banner h1 a:visited {
+		color: #000305;
+		display: block;
+		font-weight: bold;
+		margin: 0 0 .6em .2em;
+		text-decoration: none;
+	}
+	#banner h1 a:hover, #banner h1 a:active {
+		background: none;
+		color: #C74350;
+		text-shadow: none;
+	}
+
+	#banner h1 strong {font-size: 0.36em; font-weight: normal;}
+
+	
+	#banner nav {
+		background: #000305;
+		font-size: 1.143em;
+		height: 40px;
+		line-height: 30px;
+		margin: 0 auto 2em auto;
+		padding: 0;
+		text-align: center;
+		width: 800px;
+
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+
+	#banner nav ul {list-style: none; margin: 0 auto; width: 800px;}
+	#banner nav li {float: left; display: inline; margin: 0;}
+
+	#banner nav a:link, #banner nav a:visited {
+		color: #fff;
+		display: inline-block;
+		height: 30px;
+		padding: 5px 1.5em;
+		text-decoration: none;
+	}
+	#banner nav a:hover, #banner nav a:active,
+	#banner nav .active a:link, #banner nav .active a:visited {
+		background: #C74451;
+		color: #fff;
+		text-shadow: none !important;
+	}
+
+	#banner nav li:first-child a {
+		border-top-left-radius: 5px;
+		-moz-border-radius-topleft: 5px;
+		-webkit-border-top-left-radius: 5px;
+
+		border-bottom-left-radius: 5px;
+		-moz-border-radius-bottomleft: 5px;
+		-webkit-border-bottom-left-radius: 5px;
+	}
+
+
+#featured {
+	background: #fff;
+	margin-bottom: 2em;
+	overflow: hidden;
+	padding: 20px;
+	width: 760px;
+
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+#featured figure {
+	border: 2px solid #eee;
+	float: right;
+	margin: 0.786em 2em 0 5em;
+	width: 248px;
+}
+#featured figure img {display: block; float: right;}
+
+#featured h2 {color: #C74451; font-size: 1.714em; margin-bottom: 0.333em;}
+#featured h3 {font-size: 1.429em; margin-bottom: .5em;}
+
+#featured h3 a:link, #featured h3 a:visited {color: #000305; text-decoration: none;}
+#featured h3 a:hover, #featured h3 a:active {color: #fff;}
+
+
+#content {
+	background: #fff;
+	margin-bottom: 2em;
+	overflow: hidden;
+	padding: 20px 20px;
+	width: 760px;
+
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+
+#extras {margin: 0 auto 3em auto; overflow: hidden;}
+
+#extras ul {list-style: none; margin: 0;}
+#extras li {border-bottom: 1px solid #fff;}
+#extras h2 {
+	color: #C74350;
+	font-size: 1.429em;
+	margin-bottom: .25em;
+	padding: 0 3px;
+}
+
+#extras a:link, #extras a:visited {
+	color: #444;
+	display: block;
+	border-bottom: 1px solid #F4E3E3;
+	text-decoration: none;
+	padding: .3em .25em;
+}
+
+#extras a:hover, #extras a:active {color: #fff;}
+
+	
+	#extras .blogroll {
+		float: left;
+		width: 615px;
+	}
+
+	#extras .blogroll li {float: left; margin: 0 20px 0 0; width: 185px;}
+
+	
+	#extras .social {
+		float: right;
+		width: 175px;
+	}
+
+	#extras div[class='social'] a {
+		background-repeat: no-repeat;
+		background-position: 3px 6px;
+		padding-left: 25px;
+	}
+
+		
+		.social a[href*='about.me'] {background-image: url('https://china-testing.github.io/theme/images/icons/aboutme.png');}
+		.social a[href*='bitbucket.org'] {background-image: url('https://china-testing.github.io/theme/images/icons/bitbucket.png');}
+		.social a[href*='delicious.com'] {background-image: url('https://china-testing.github.io/theme/images/icons/delicious.png');}
+		.social a[href*='digg.com'] {background-image: url('https://china-testing.github.io/theme/images/icons/digg.png');}
+		.social a[href*='facebook.com'] {background-image: url('https://china-testing.github.io/theme/images/icons/facebook.png');}
+		.social a[href*='gitorious.org'] {background-image: url('https://china-testing.github.io/theme/images/icons/gitorious.png');}
+		.social a[href*='github.com'],
+		.social a[href*='git.io'] {
+			background-image: url('https://china-testing.github.io/theme/images/icons/github.png');
+			background-size: 16px 16px;
+		}
+		.social a[href*='gittip.com'] {background-image: url('https://china-testing.github.io/theme/images/icons/gittip.png');}
+		.social a[href*='plus.google.com'] {background-image: url('https://china-testing.github.io/theme/images/icons/google-plus.png');}
+		.social a[href*='groups.google.com'] {background-image: url('https://china-testing.github.io/theme/images/icons/google-groups.png');}
+		.social a[href*='news.ycombinator.com'],
+		.social a[href*='hackernewsers.com'] {background-image: url('https://china-testing.github.io/theme/images/icons/hackernews.png');}
+		.social a[href*='last.fm'], .social a[href*='lastfm.'] {background-image: url('https://china-testing.github.io/theme/images/icons/lastfm.png');}
+		.social a[href*='linkedin.com'] {background-image: url('https://china-testing.github.io/theme/images/icons/linkedin.png');}
+		.social a[href*='reddit.com'] {background-image: url('https://china-testing.github.io/theme/images/icons/reddit.png');}
+		.social a[type$='atom+xml'], .social a[type$='rss+xml'] {background-image: url('https://china-testing.github.io/theme/images/icons/rss.png');}
+		.social a[href*='slideshare.net'] {background-image: url('https://china-testing.github.io/theme/images/icons/slideshare.png');}
+		.social a[href*='speakerdeck.com'] {background-image: url('https://china-testing.github.io/theme/images/icons/speakerdeck.png');}
+		.social a[href*='stackoverflow.com'] {background-image: url('https://china-testing.github.io/theme/images/icons/stackoverflow.png');}
+		.social a[href*='twitter.com'] {background-image: url('https://china-testing.github.io/theme/images/icons/twitter.png');}
+		.social a[href*='vimeo.com'] {background-image: url('https://china-testing.github.io/theme/images/icons/vimeo.png');}
+		.social a[href*='youtube.com'] {background-image: url('https://china-testing.github.io/theme/images/icons/youtube.png');}
+
+
+#about {
+	background: #fff;
+	font-style: normal;
+	margin-bottom: 2em;
+	overflow: hidden;
+	padding: 20px;
+	text-align: left;
+	width: 760px;
+
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+#about .primary {float: left; width: 165px;}
+#about .primary strong {color: #C64350; display: block; font-size: 1.286em;}
+#about .photo {float: left; margin: 5px 20px;}
+
+#about .url:link, #about .url:visited {text-decoration: none;}
+
+#about .bio {float: right; width: 500px;}
+
+
+#contentinfo {padding-bottom: 2em; text-align: right;}
+
+
+
+.hentry {
+	display: block;
+	clear: both;
+	border-bottom: 1px solid #eee;
+	padding: 1.5em 0;
+}
+li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
+#content > .hentry {padding: 1em 0;}
+.hentry img{display : none ;}
+.entry-title {font-size: 3em; margin-bottom: 10px; margin-top: 0;}
+.entry-title a:link, .entry-title a:visited {text-decoration: none; color: #333;}
+.entry-title a:visited {background-color: #fff;}
+
+.hentry .post-info * {font-style: normal;}
+
+	
+	.hentry footer {margin-bottom: 2em;}
+	.hentry footer address {display: inline;}
+	#posts-list footer address {display: block;}
+
+	
+	#posts-list {list-style: none; margin: 0;}
+	#posts-list .hentry {padding-left: 10px; position: relative;}
+
+	#posts-list footer {
+		left: 10px;
+		position: relative;
+        float: left;
+		top: 0.5em;
+		width: 190px;
+	}
+
+	
+	#about-author {
+		background: #f9f9f9;
+		clear: both;
+		font-style: normal;
+		margin: 2em 0;
+		padding: 10px 20px 15px 20px;
+
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+
+	#about-author strong {
+		color: #C64350;
+		clear: both;
+		display: block;
+		font-size: 1.429em;
+	}
+
+	#about-author .photo {border: 1px solid #ddd; float: left; margin: 5px 1em 0 0;}
+
+	
+	#comments-list {list-style: none; margin: 0 1em;}
+	#comments-list blockquote {
+		background: #f8f8f8;
+		clear: both;
+		font-style: normal;
+		margin: 0;
+		padding: 15px 20px;
+
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+	#comments-list footer {color: #888; padding: .5em 1em 0 0; text-align: right;}
+
+	#comments-list li:nth-child(2n) blockquote {background: #F5f5f5;}
+
+	
+	#add-comment label {clear: left; float: left; text-align: left; width: 150px;}
+	#add-comment input[type='text'],
+	#add-comment input[type='email'],
+	#add-comment input[type='url'] {float: left; width: 200px;}
+
+	#add-comment textarea {float: left; height: 150px; width: 495px;}
+
+	#add-comment p.req {clear: both; margin: 0 .5em 1em 0; text-align: right;}
+
+	#add-comment input[type='submit'] {float: right; margin: 0 .5em;}
+	#add-comment * {margin-bottom: .5em;}</style><style class="darkreader darkreader--sync" media="screen"></style>
+<meta name="darkreader" content="24026ea7510d446dbea7eaf70e2193c6"><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: #684b00 !important;
+    border-color: #9e7e00 !important;
+    color: #d7d4cf !important;
+}
+#vimvixen-console-frame {
+    color-scheme: light !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1,
+.nfe-quote-text {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: #1b4958 !important;
+}
+.tou-z65h9k,
+.tou-mignzq,
+.tou-1b6i2ox,
+.tou-lnqlqk {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.tou-75mvi {
+    background-color: #0f3a47 !important;
+}
+.tou-ta9e87,
+.tou-1w3fhi0,
+.tou-1b8t2us,
+.tou-py7lfi,
+.tou-1lpmd9d,
+.tou-1frrtv8,
+.tou-17ezmgn {
+    background-color: #1e2021 !important;
+}
+.tou-uknfeu {
+    background-color: #432c09 !important;
+}
+.tou-6i3zyv {
+    background-color: #245d70 !important;
+}
+div.mermaid-viewer-control-panel .btn {
+    background-color: var(--darkreader-neutral-background);
+    fill: var(--darkreader-neutral-text);
+}
+svg g rect.er {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.entityBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxOdd {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxEven {
+    fill: var(--darkreader-selection-background);
+    fill-opacity: 0.8 !important;
+}
+svg rect.er.relationshipLabelBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g g.nodes rect,
+svg g g.nodes polygon {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.task {
+    fill: var(--darkreader-selection-background) !important;
+}
+svg line.messageLine0,
+svg line.messageLine1 {
+    stroke: var(--darkreader-neutral-text) !important;
+}
+div.mermaid .actor {
+    fill: var(--darkreader-neutral-background) !important;
+}
+mitid-authenticators-code-app > .code-app-container {
+    background-color: white !important;
+    padding-top: 1rem;
+}
+iframe#unpaywall[src$="unpaywall.html"] {
+    color-scheme: light !important;
+}
+embed[type="application/pdf"][src="about:blank"] { filter: invert(100%) contrast(90%); }</style><style type="text/css">.danmu{overflow:hidden;-webkit-user-select:none;-moz-user-select:none;user-select:none;-ms-user-select:none}.danmu>*{position:absolute;white-space:nowrap}.danmu-switch{width:32px;height:20px;border-radius:100px;background-color:#ccc;-webkit-box-sizing:border-box;box-sizing:border-box;outline:none;cursor:pointer;position:relative;text-align:center;margin:10px auto}.danmu-switch.danmu-switch-active{padding-left:12px;background-color:#f85959}.danmu-switch span.txt{width:20px;height:20px;line-height:20px;text-align:center;display:block;border-radius:100px;background-color:#fff;-webkit-box-shadow:-2px 0 0 0 rgba(0, 0, 0, .04);box-shadow:-2px 0 0 0 rgba(0, 0, 0, .04);font-family:PingFangSC;font-size:10px;font-weight:500;color:#f44336}</style><style class="darkreader darkreader--sync" media="screen"></style><style type="text/css">#_copy{align-items:center;background:#4494d5;border-radius:3px;color:#fff;cursor:pointer;display:flex;font-size:13px;height:30px;justify-content:center;position:absolute;width:60px;z-index:1000}#select-tooltip,#sfModal,.modal-backdrop,div[id^=reader-helper]{display:none!important}.modal-open{overflow:auto!important}._sf_adjust_body{padding-right:0!important}.enable_copy_btns_div{position:fixed;width:154px;left:10px;top:45%;background:#e7f1ff;border:2px solid #4595d5;font-weight:600;border-radius:2px;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;z-index:5000}.enable_copy_btns_logo{width:100%;background:#4595d5;text-align:center;font-size:12px;color:#e7f1ff;line-height:30px;height:30px}.enable_copy_btns_btn{display:block;width:128px;height:28px;background:#7f5711;border-radius:4px;color:#fff;font-size:12px;border:0;outline:0;margin:8px auto;font-weight:700;cursor:pointer;opacity:.9}.enable_copy_btns_btn:hover{opacity:.8}.enable_copy_btns_btn:active{opacity:1}</style><style class="darkreader darkreader--sync" media="screen"></style><style data-id="immersive-translate-input-injected-css">.immersive-translate-input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2147483647;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.immersive-translate-attach-loading::after {
+  content: " ";
+
+  --loading-color: #f78fb6;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: block;
+  margin: 12px auto;
+  position: relative;
+  color: white;
+  left: -100px;
+  box-sizing: border-box;
+  animation: immersiveTranslateShadowRolling 1.5s linear infinite;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-2000%, -50%);
+  z-index: 100;
+}
+
+.immersive-translate-loading-spinner {
+  vertical-align: middle !important;
+  width: 10px !important;
+  height: 10px !important;
+  display: inline-block !important;
+  margin: 0 4px !important;
+  border: 2px rgba(221, 244, 255, 0.6) solid !important;
+  border-top: 2px rgba(0, 0, 0, 0.375) solid !important;
+  border-left: 2px rgba(0, 0, 0, 0.375) solid !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  -webkit-animation: immersive-translate-loading-animation 0.6s infinite linear !important;
+  animation: immersive-translate-loading-animation 0.6s infinite linear !important;
+}
+
+@-webkit-keyframes immersive-translate-loading-animation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+
+@keyframes immersive-translate-loading-animation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+
+.immersive-translate-input-loading {
+  --loading-color: #f78fb6;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: block;
+  margin: 12px auto;
+  position: relative;
+  color: white;
+  left: -100px;
+  box-sizing: border-box;
+  animation: immersiveTranslateShadowRolling 1.5s linear infinite;
+}
+
+@keyframes immersiveTranslateShadowRolling {
+  0% {
+    box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+  }
+
+  12% {
+    box-shadow: 100px 0 var(--loading-color), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+  }
+
+  25% {
+    box-shadow: 110px 0 var(--loading-color), 100px 0 var(--loading-color), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+  }
+
+  36% {
+    box-shadow: 120px 0 var(--loading-color), 110px 0 var(--loading-color), 100px 0 var(--loading-color), 0px 0 rgba(255, 255, 255, 0);
+  }
+
+  50% {
+    box-shadow: 130px 0 var(--loading-color), 120px 0 var(--loading-color), 110px 0 var(--loading-color), 100px 0 var(--loading-color);
+  }
+
+  62% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--loading-color), 120px 0 var(--loading-color), 110px 0 var(--loading-color);
+  }
+
+  75% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--loading-color), 120px 0 var(--loading-color);
+  }
+
+  87% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 var(--loading-color);
+  }
+
+  100% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
+  }
+}
+
+
+.immersive-translate-search-recomend {
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  position: relative;
+  font-size: 16px;
+}
+
+.immersive-translate-search-enhancement-en-title {
+  color: #4d5156;
+}
+
+
+
+.immersive-translate-search-settings {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+}
+
+.immersive-translate-search-recomend::before {
+  /* content: " "; */
+  /* width: 20px; */
+  /* height: 20px; */
+  /* top: 16px; */
+  /* position: absolute; */
+  /* background: center / contain url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAxlBMVEUAAADpTInqTIjpSofnSIfqS4nfS4XqS4nqTIjsTYnrTInqTIroS4jvQIDqTIn////+/v7rSYjpTIn8/v7uaZzrTIr9/f3wfansWJL88/b85e73qc39+/v3xNnylrvrVI/98fb62Obva5/8+fr76vH4y9zpSIj74e353Oj1ocTzm77xhK/veKbtYpjsXJTqU47oTInxjrXyh7L99fj40eH2ttH1udD3sc31ssz1rMnykLXucqPtbqD85e/1xdn2u9DzqcXrUY6FaJb8AAAADnRSTlMA34BgIM8Q37/fz7+/EGOHcVQAAAGhSURBVDjLhZPncuowEEZFTW7bXVU7xsYYTO/p7bb3f6lICIOYJOT4h7/VnFmvrBFjrF3/CR/SajBHswafctG0Qg3O8O0Xa8BZ6uw7eLjqr30SofCDVSkemMinfL1ecy20r5ygR5zz3ArcAqJExPTPKhDENEmS30Q9+yo4lEQkqVTiIEAHCT10xWERRdH0Bq0aCOPZNDV3s0xaYce1lHEoDHU8wEh3qRJypNcTAeKUIjgKMeGLDoRCLVLTVf+Ownj8Kk6H9HM6QXPgYjQSB0F00EJEu10ILQrs/QeP77BSSr0MzLOyuJJQbnUoOOIUI/A8EeJk9E4YUHUWiRyTVKGgQUB8/3e/NpdGlfI+FMQyWsCBWyz4A/ZyHXyiiz0Ne5aGZssoxRmcChw8/EFKQ5JwwkUo3FRT5yXS7q+Y/rHDZmFktzpGMvO+5QofA4FPpEmGw+EWRCFvnaof7Zhe8NuYSLR0xErKLThUSs8gnODh87ssy6438yzbLzxl012HS19vfCf3CNhnbWOL1eEsDda+gDPUvri8tSZzNFrwIZf1NmNvqC1I/t8j7nYAAAAASUVORK5CYII='); */
+}
+
+.immersive-translate-search-title {}
+
+.immersive-translate-search-title-wrapper {}
+
+.immersive-translate-search-time {
+  font-size: 12px;
+  margin: 4px 0 24px;
+  color: #70757a;
+}
+
+.immersive-translate-expand-items {
+  display: none;
+}
+
+.immersive-translate-search-more {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.immersive-translate-modal {
+  display: none;
+  position: fixed;
+  z-index: 2147483647;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 15px;
+}
+
+.immersive-translate-modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 40px 24px 24px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 270px;
+  font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu",
+    "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  position: relative
+}
+
+@media screen and (max-width: 768px) {
+  .immersive-translate-modal-content {
+    margin: 50% auto !important;
+  }
+}
+
+.immersive-translate-modal .immersive-translate-modal-content-in-input {
+  max-width: 500px;
+}
+.immersive-translate-modal-content-in-input .immersive-translate-modal-body {
+  text-align: left;
+  max-height: unset;
+}
+
+.immersive-translate-modal-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #333333;
+}
+
+.immersive-translate-modal-body {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333333;
+  word-break: break-all;
+  margin-top: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .immersive-translate-modal-body {
+    max-height: 250px;
+    overflow-y: auto;
+  }
+}
+
+.immersive-translate-close {
+  color: #666666;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.immersive-translate-close:hover,
+.immersive-translate-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.immersive-translate-modal-footer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.immersive-translate-btn {
+  width: fit-content;
+  color: #fff;
+  background-color: #ea4c89;
+  border: none;
+  font-size: 16px;
+  margin: 0 8px;
+  padding: 9px 30px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.immersive-translate-btn:hover {
+  background-color: #f082ac;
+}
+
+.immersive-translate-cancel-btn {
+  /* gray color */
+  background-color: rgb(89, 107, 120);
+}
+
+
+.immersive-translate-cancel-btn:hover {
+  background-color: hsl(205, 20%, 32%);
+}
+
+.immersive-translate-action-btn {
+  background-color: transparent;
+  color: #EA4C89;
+  border: 1px solid #EA4C89
+}
+
+.immersive-translate-btn svg {
+  margin-right: 5px;
+}
+
+.immersive-translate-link {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none;
+  text-decoration: none;
+  color: #007bff;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, .1);
+}
+
+.immersive-translate-primary-link {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none;
+  text-decoration: none;
+  color: #ea4c89;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, .1);
+}
+
+.immersive-translate-modal input[type="radio"] {
+  margin: 0 6px;
+  cursor: pointer;
+}
+
+.immersive-translate-modal label {
+  cursor: pointer;
+}
+
+.immersive-translate-close-action {
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  cursor: pointer;
+}
+</style><style class="darkreader darkreader--sync" media="screen"></style><style type="text/css">.danmu{overflow:hidden;-webkit-user-select:none;-moz-user-select:none;user-select:none;-ms-user-select:none}.danmu>*{position:absolute;white-space:nowrap}.danmu-switch{width:32px;height:20px;border-radius:100px;background-color:#ccc;-webkit-box-sizing:border-box;box-sizing:border-box;outline:none;cursor:pointer;position:relative;text-align:center;margin:10px auto}.danmu-switch.danmu-switch-active{padding-left:12px;background-color:#f85959}.danmu-switch span.txt{width:20px;height:20px;line-height:20px;text-align:center;display:block;border-radius:100px;background-color:#fff;-webkit-box-shadow:-2px 0 0 0 rgba(0, 0, 0, .04);box-shadow:-2px 0 0 0 rgba(0, 0, 0, .04);font-family:PingFangSC;font-size:10px;font-weight:500;color:#f44336}</style><style class="darkreader darkreader--sync" media="screen"></style><style type="text/css">.danmu{overflow:hidden;-webkit-user-select:none;-moz-user-select:none;user-select:none;-ms-user-select:none}.danmu>*{position:absolute;white-space:nowrap}.danmu-switch{width:32px;height:20px;border-radius:100px;background-color:#ccc;-webkit-box-sizing:border-box;box-sizing:border-box;outline:none;cursor:pointer;position:relative;text-align:center;margin:10px auto}.danmu-switch.danmu-switch-active{padding-left:12px;background-color:#f85959}.danmu-switch span.txt{width:20px;height:20px;line-height:20px;text-align:center;display:block;border-radius:100px;background-color:#fff;-webkit-box-shadow:-2px 0 0 0 rgba(0, 0, 0, .04);box-shadow:-2px 0 0 0 rgba(0, 0, 0, .04);font-family:PingFangSC;font-size:10px;font-weight:500;color:#f44336}</style><style class="darkreader darkreader--sync" media="screen"></style></head>
+
+<body id="index" class="home __Cici_translated_text_show_underline__">
+        <header id="banner" class="body">
+                <h1><a href="https://china-testing.github.io/">python自动化测试人工智能 </a></h1>
+                <nav><ul>
+                    <li><a href="https://china-testing.github.io/category/ba-zi.html">八字</a></li>
+                    <li><a href="https://china-testing.github.io/category/ce-shi.html">测试</a></li>
+                    <li><a href="https://china-testing.github.io/category/ce-shi-kuang-jia.html">测试框架</a></li>
+                    <li><a href="https://china-testing.github.io/category/common.html">common</a></li>
+                    <li><a href="https://china-testing.github.io/category/da-shu-ju.html">大数据</a></li>
+                    <li><a href="https://china-testing.github.io/category/feng-shui.html">风水</a></li>
+                    <li><a href="https://china-testing.github.io/category/ji-qi-xue-xi.html">机器学习</a></li>
+                    <li><a href="https://china-testing.github.io/category/jie-meng.html">解梦</a></li>
+                    <li><a href="https://china-testing.github.io/category/linux.html">linux</a></li>
+                    <li class="active"><a href="https://china-testing.github.io/category/python.html">python</a></li>
+                    <li><a href="https://china-testing.github.io/category/shu-ji.html">书籍</a></li>
+                    <li><a href="https://china-testing.github.io/category/shu-ju-fen-xi.html">数据分析</a></li>
+                    <li><a href="https://china-testing.github.io/category/zhong-cao-yao.html">中草药</a></li>
+                    <li><a href="https://china-testing.github.io/category/zhong-yi.html">中医</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://china-testing.github.io/python_pep8.html" rel="bookmark" title="Permalink to python代码风格指南(PEP8中文版)">python代码风格指南(PEP8中文版)</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-21T14:50:00+08:00">
+                Published: 二 21 八月 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://china-testing.github.io/author/andrew.html">andrew</a>
+        </address>
+<p>In <a href="https://china-testing.github.io/category/python.html">python</a>.</p>
+
+</footer><!-- /.post-info -->      <p>本文给出主Python版本标准库的编码约定。CPython的C代码风格参见<a href="https://www.python.org/dev/peps/pep-0007/">PEP7</a>。</p>
+<p>本文和<a href="https://www.python.org/dev/peps/pep-0257/">PEP 257 文档字符串标准</a>改编自Guido最初的《Python Style Guide》, 并增加了Barry的<a href="http://barry.warsaw.us/software/STYLEGUIDE.txt">GNU Mailman Coding Style Guide</a>的部分内容。</p>
+<p>本文会随着语言改变等而改变。</p>
+<p>许多项目都有自己的编码风格指南，冲突时自己的指南为准。</p>
+<h2 id="_1">一致性考虑</h2>
+<p>Guido的关键点之一是：代码更多是用来读而不是写。本指南旨在改善Python代码的可读性，即<a href="https://www.python.org/dev/peps/pep-0020/">PEP 20</a>所说的“可读性计数"(Readability counts)。</p>
+<p>风格指南强调一致性。项目、模块或函数保持一致都很重要。</p>
+<p>最重要的是知道何时不一致, 有时风格指南并不适用。当有疑惑时运用你的最佳判断，参考其他例子并多问！</p>
+<p>特别注意：不要因为遵守本PEP而破坏向后兼容性！</p>
+<p>部分可以违背指南情况：</p>
+<ul>
+<li>
+<p>遵循指南会降低可读性。</p>
+</li>
+<li>
+<p>与周围其他代码不一致。</p>
+</li>
+<li>
+<p>代码在引入指南完成，暂时没有理由修改。</p>
+</li>
+<li>
+<p>旧版本兼容。</p>
+</li>
+</ul>
+<h2 id="_2">代码布局</h2>
+<h4 id="_3">缩进</h4>
+<p>每级缩进用4个空格。</p>
+<p>括号中使用垂直隐式缩进或使用悬挂缩进。后者应该注意第一行要没有参数，后续行要有缩进。</p>
+<ul>
+<li>Yes</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># 对准左括号</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="n">long_function_name</span><span class="p">(</span><span class="n">var_one</span><span class="p">,</span> <span class="n">var_two</span><span class="p">,</span>
+                         <span class="n">var_three</span><span class="p">,</span> <span class="n">var_four</span><span class="p">)</span>
+
+<span class="c1"># 不对准左括号，但加多一层缩进，以和后面内容区别。</span>
+<span class="k">def</span> <span class="nf">long_function_name</span><span class="p">(</span>
+        <span class="n">var_one</span><span class="p">,</span> <span class="n">var_two</span><span class="p">,</span> <span class="n">var_three</span><span class="p">,</span>
+        <span class="n">var_four</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">var_one</span><span class="p">)</span>
+
+<span class="c1"># 悬挂缩进必须加多一层缩进.</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="n">long_function_name</span><span class="p">(</span>
+    <span class="n">var_one</span><span class="p">,</span> <span class="n">var_two</span><span class="p">,</span>
+    <span class="n">var_three</span><span class="p">,</span> <span class="n">var_four</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>No</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># 不使用垂直对齐时，第一行不能有参数。</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="n">long_function_name</span><span class="p">(</span><span class="n">var_one</span><span class="p">,</span> <span class="n">var_two</span><span class="p">,</span>
+    <span class="n">var_three</span><span class="p">,</span> <span class="n">var_four</span><span class="p">)</span>
+
+<span class="c1"># 参数的缩进和后续内容缩进不能区别。</span>
+<span class="k">def</span> <span class="nf">long_function_name</span><span class="p">(</span>
+    <span class="n">var_one</span><span class="p">,</span> <span class="n">var_two</span><span class="p">,</span> <span class="n">var_three</span><span class="p">,</span>
+    <span class="n">var_four</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">var_one</span><span class="p">)</span>
+</pre></div>
+
+
+<p>4个空格的规则是对续行可选的。</p>
+<div class="highlight"><pre><span></span><span class="c1"># 悬挂缩进不一定是4个空格</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="n">long_function_name</span><span class="p">(</span>
+  <span class="n">var_one</span><span class="p">,</span> <span class="n">var_two</span><span class="p">,</span>
+  <span class="n">var_three</span><span class="p">,</span> <span class="n">var_four</span><span class="p">)</span>
+</pre></div>
+
+
+<p>if语句跨行时，两个字符关键字(比如if)加上一个空格，再加上左括号构成了很好的缩进。后续行暂时没有规定，至少有如下三种格式，建议使用第3种。</p>
+<div class="highlight"><pre><span></span><span class="c1"># 没有额外缩进，不是很好看，个人不推荐.</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">this_is_one_thing</span> <span class="ow">and</span>
+    <span class="n">that_is_another_thing</span><span class="p">):</span>
+    <span class="n">do_something</span><span class="p">()</span>
+
+<span class="c1"># 添加注释</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">this_is_one_thing</span> <span class="ow">and</span>
+    <span class="n">that_is_another_thing</span><span class="p">):</span>
+    <span class="c1"># Since both conditions are true, we can frobnicate.</span>
+    <span class="n">do_something</span><span class="p">()</span>
+
+<span class="c1"># 额外添加缩进,推荐。</span>
+<span class="c1"># Add some extra indentation on the conditional continuation line.</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">this_is_one_thing</span>
+        <span class="ow">and</span> <span class="n">that_is_another_thing</span><span class="p">):</span>
+    <span class="n">do_something</span><span class="p">()</span>
+</pre></div>
+
+
+<p>右边括号也可以另起一行。有两种格式，建议第2种。</p>
+<div class="highlight"><pre><span></span><span class="c1"># 右括号不回退，个人不推荐</span>
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">some_function_that_takes_arguments</span><span class="p">(</span>
+    <span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">,</span>
+    <span class="s1">'d'</span><span class="p">,</span> <span class="s1">'e'</span><span class="p">,</span> <span class="s1">'f'</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="c1"># 右括号回退</span>
+<span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">some_function_that_takes_arguments</span><span class="p">(</span>
+    <span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">,</span>
+    <span class="s1">'d'</span><span class="p">,</span> <span class="s1">'e'</span><span class="p">,</span> <span class="s1">'f'</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<h4 id="tab">空格或Tab?</h4>
+<ul>
+<li>
+<p>空格是首选的缩进方法。</p>
+</li>
+<li>
+<p>Tab仅仅在已经使用tab缩进的代码中为了保持一致性而使用。</p>
+</li>
+<li>
+<p>Python 3中不允许混合使用Tab和空格缩进。</p>
+</li>
+<li>
+<p>Python 2的包含空格与Tab和空格缩进的应该全部转为空格缩进。</p>
+</li>
+</ul>
+<p>Python2命令行解释器使用-t选项时有非法混合Tab和空格的情况会告警。当使用-tt警告提升为错误。强烈推荐这些选项！另外个人推荐pep8和autopep8模块。</p>
+<h4 id="_4">最大行宽</h4>
+<p>限制所有行的最大行宽为79字符。</p>
+<p>文本长块，比如文档字符串或注释，行长度应限制为72个字符。</p>
+<p>多数工具默认的续行功能会破坏代码结构，使它更难理解，不推荐使用。但是超过80个字符加以提醒是必要的。一些工具可能根本不具备动态换行功能。</p>
+<p>一些团队强烈希望更长的行宽。如果能达成一致，可以从从80提高到100个字符(最多99个字符)增加了标称线的长度，不过依旧建议文档字符串和注释保持在72的长度。</p>
+<p>Python标准库比较保守，限制行宽79个字符(文档字符串/注释72）。</p>
+<p>续行的首选方法是使用小括号、中括号和大括号反斜线仍可能在适当的时候。其次是反斜杠。比如with语句中：</p>
+<div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'/path/to/some/file/you/want/to/read'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_1</span><span class="p">,</span> \
+     <span class="nb">open</span><span class="p">(</span><span class="s1">'/path/to/some/file/being/written'</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_2</span><span class="p">:</span>
+    <span class="n">file_2</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_1</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+
+
+<p>类似的还有assert。</p>
+<p>注意续行要尽量不影响可读性。比如通常在二元运算符之后续行：</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Rectangle</span><span class="p">(</span><span class="n">Blob</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">emphasis</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">highlight</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">width</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">height</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span>
+                <span class="n">color</span> <span class="o">==</span> <span class="s1">'red'</span> <span class="ow">and</span> <span class="n">emphasis</span> <span class="o">==</span> <span class="s1">'strong'</span> <span class="ow">or</span>
+                <span class="n">highlight</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"sorry, you lose"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">width</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">height</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="p">(</span><span class="n">color</span> <span class="o">==</span> <span class="s1">'red'</span> <span class="ow">or</span>
+                                           <span class="n">emphasis</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"I don't think so -- values are </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span>
+                             <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">))</span>
+        <span class="n">Blob</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span>
+                      <span class="n">color</span><span class="p">,</span> <span class="n">emphasis</span><span class="p">,</span> <span class="n">highlight</span><span class="p">)</span>
+</pre></div>
+
+
+<h4 id="_5">空行</h4>
+<ul>
+<li>
+<p>两行空行分割顶层函数和类的定义。</p>
+</li>
+<li>
+<p>类的方法定义用单个空行分割。</p>
+</li>
+<li>
+<p>额外的空行可以必要的时候用于分割不同的函数组，但是要尽量节约使用。</p>
+</li>
+<li>
+<p>额外的空行可以必要的时候在函数中用于分割不同的逻辑块，但是要尽量节约使用。</p>
+</li>
+<li>
+<p>Python接 contol-L作为空白符；许多工具视它为分页符，这些要因编辑器而异。</p>
+</li>
+</ul>
+<h4 id="_6">源文件编码</h4>
+<p>在核心Python发布的代码应该总是使用UTF-8(ASCII在Python 2)。</p>
+<p>ASCII文件(Python 2)或UTF-8(Python 3)不应有编码声明。</p>
+<p>标准库中非默认的编码应仅用于测试或当注释或文档字符串,比如包含非ASCII字符的作者姓名，尽量使用\x , \u , \U , or \N。</p>
+<p>Python 3.0及以后版本，<a href="https://www.python.org/dev/peps/pep-3131/">PEP 3131</a>可供参考，部分内容如下：在Python标准库必须使用ASCII标识符，并尽量只使用英文字母。此外字符串和注释也必须用ASCII。唯一的例外是：（a）测试非ASCII的功能，和（b）作者的名字不是拉丁字母。</p>
+<h4 id="_7">导入</h4>
+<ul>
+<li>导入在单独行</li>
+</ul>
+<p>Yes：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">Popen</span><span class="p">,</span> <span class="n">PIPE</span>
+</pre></div>
+
+
+<p>No:</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+</pre></div>
+
+
+<ul>
+<li>导入始终在文件的顶部，在模块注释和文档字符串之后，在模块全局变量和常量之前。</li>
+</ul>
+<p>导入顺序如下：标准库进口,相关的第三方库，本地库。各组的导入之间要有空行。</p>
+<p>相关的all放在导入之后。</p>
+<ul>
+<li>推荐绝对路径导入，因为它们通常更可读，而且往往是表现更好的（或至少提供更好的错误消息。</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mypkg.sibling</span>
+<span class="kn">from</span> <span class="nn">mypkg</span> <span class="kn">import</span> <span class="n">sibling</span>
+<span class="kn">from</span> <span class="nn">mypkg.sibling</span> <span class="kn">import</span> <span class="n">example</span>
+</pre></div>
+
+
+<p>在绝对路径比较长的情况下，也可以使用相对路径：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">sibling</span>
+<span class="kn">from</span> <span class="nn">.sibling</span> <span class="kn">import</span> <span class="n">example</span>
+</pre></div>
+
+
+<p>Python 3中已经禁止隐式的相对导入。</p>
+<ul>
+<li>导入类的方法：</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">myclass</span> <span class="kn">import</span> <span class="n">MyClass</span>
+<span class="kn">from</span> <span class="nn">foo.bar.yourclass</span> <span class="kn">import</span> <span class="n">YourClass</span>
+</pre></div>
+
+
+<p>如果和本地名字有冲突：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">myclass</span>
+<span class="kn">import</span> <span class="nn">foo.bar.yourclass</span>
+</pre></div>
+
+
+<ul>
+<li>禁止使用通配符导入。</li>
+</ul>
+<p>通配符导入(from <module> import *)应该避免，因为它不清楚命名空间有哪些名称存，混淆读者和许多自动化的工具。唯一的例外是重新发布对外的API时可以考虑使用。</module></p>
+<h2 id="_8">字符串引用</h2>
+<p>Python中单引号字符串和双引号字符串都是相同的。注意尽量避免在字符串中的反斜杠以提高可读性。</p>
+<p>根据<a href="https://www.python.org/dev/peps/pep-0257/">PEP 257</a>, 三个引号都使用双引号。</p>
+<h2 id="_9">表达式和语句中的空格</h2>
+<h4 id="_10">强制要求</h4>
+<ul>
+<li>括号里边避免空格</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># 括号里边避免空格</span>
+<span class="c1"># Yes</span>
+<span class="n">spam</span><span class="p">(</span><span class="n">ham</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">{</span><span class="n">eggs</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="c1"># No</span>
+<span class="n">spam</span><span class="p">(</span> <span class="n">ham</span><span class="p">[</span> <span class="mi">1</span> <span class="p">],</span> <span class="p">{</span> <span class="n">eggs</span><span class="p">:</span> <span class="mi">2</span> <span class="p">}</span> <span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>逗号，冒号，分号之前避免空格</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># 逗号，冒号，分号之前避免空格</span>
+<span class="c1"># Yes</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span> <span class="k">print</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span>
+<span class="c1"># No</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">4</span> <span class="p">:</span> <span class="k">print</span> <span class="n">x</span> <span class="p">,</span> <span class="n">y</span> <span class="p">;</span> <span class="n">x</span> <span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="p">,</span> <span class="n">x</span>
+</pre></div>
+
+
+<ul>
+<li>索引操作中的冒号当作操作符处理前后要有同样的空格(一个空格或者没有空格，个人建议是没有。</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="n">ham</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">9</span><span class="p">],</span> <span class="n">ham</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">9</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">ham</span><span class="p">[:</span><span class="mi">9</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">ham</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">3</span><span class="p">],</span> <span class="n">ham</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">9</span><span class="p">:]</span>
+<span class="n">ham</span><span class="p">[</span><span class="n">lower</span><span class="p">:</span><span class="n">upper</span><span class="p">],</span> <span class="n">ham</span><span class="p">[</span><span class="n">lower</span><span class="p">:</span><span class="n">upper</span><span class="p">:],</span> <span class="n">ham</span><span class="p">[</span><span class="n">lower</span><span class="p">::</span><span class="n">step</span><span class="p">]</span>
+<span class="n">ham</span><span class="p">[</span><span class="n">lower</span><span class="o">+</span><span class="n">offset</span> <span class="p">:</span> <span class="n">upper</span><span class="o">+</span><span class="n">offset</span><span class="p">]</span>
+<span class="n">ham</span><span class="p">[:</span> <span class="n">upper_fn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">:</span> <span class="n">step_fn</span><span class="p">(</span><span class="n">x</span><span class="p">)],</span> <span class="n">ham</span><span class="p">[::</span> <span class="n">step_fn</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
+<span class="n">ham</span><span class="p">[</span><span class="n">lower</span> <span class="o">+</span> <span class="n">offset</span> <span class="p">:</span> <span class="n">upper</span> <span class="o">+</span> <span class="n">offset</span><span class="p">]</span>
+<span class="c1"># No</span>
+<span class="n">ham</span><span class="p">[</span><span class="n">lower</span> <span class="o">+</span> <span class="n">offset</span><span class="p">:</span><span class="n">upper</span> <span class="o">+</span> <span class="n">offset</span><span class="p">]</span>
+<span class="n">ham</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="mi">9</span><span class="p">],</span> <span class="n">ham</span><span class="p">[</span><span class="mi">1</span> <span class="p">:</span><span class="mi">9</span><span class="p">],</span> <span class="n">ham</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">9</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">ham</span><span class="p">[</span><span class="n">lower</span> <span class="p">:</span> <span class="p">:</span> <span class="n">upper</span><span class="p">]</span>
+<span class="n">ham</span><span class="p">[</span> <span class="p">:</span> <span class="n">upper</span><span class="p">]</span>
+</pre></div>
+
+
+<p>函数调用的左括号之前不能有空格</p>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="n">spam</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dct</span><span class="p">[</span><span class="s1">'key'</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+<span class="c1"># No</span>
+<span class="n">spam</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dct</span> <span class="p">[</span><span class="s1">'key'</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span> <span class="p">[</span><span class="n">index</span><span class="p">]</span>
+</pre></div>
+
+
+<ul>
+<li>赋值等操作符前后不能因为对齐而添加多个空格</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">long_variable</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># No</span>
+<span class="n">x</span>             <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y</span>             <span class="o">=</span> <span class="mi">2</span>
+<span class="n">long_variable</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+
+
+<h4 id="_11">其他建议</h4>
+<ul>
+<li>二元运算符两边放置一个空格:</li>
+</ul>
+<p>涉及 =、符合操作符 ( += , -=等)、比较( == , &lt; , &gt; , != , &lt;&gt; , &lt;= , &gt;= , in , not in , is , is not )、布尔( and , or , not )。</p>
+<ul>
+<li>优先级高的运算符或操作符的前后不建议有空格。</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">submitted</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">hypot2</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># No</span>
+<span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">submitted</span> <span class="o">+=</span><span class="mi">1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">hypot2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>关键字参数和默认值参数的前后不要加空格</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="k">def</span> <span class="nf">complex</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">magic</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="n">real</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">imag</span><span class="p">)</span>
+
+<span class="c1"># No</span>
+<span class="k">def</span> <span class="nf">complex</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">magic</span><span class="p">(</span><span class="n">r</span> <span class="o">=</span> <span class="n">real</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="n">imag</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>函数注释中，=前后要有空格，冒号和"-&gt;"的前面无空格，后面有空格。</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="k">def</span> <span class="nf">munge</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">AnyStr</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">munge</span><span class="p">(</span><span class="n">sep</span><span class="p">:</span> <span class="n">AnyStr</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">munge</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">AnyStr</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">munge</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">AnyStr</span><span class="p">,</span> <span class="n">sep</span><span class="p">:</span> <span class="n">AnyStr</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+
+<span class="c1"># No</span>
+<span class="k">def</span> <span class="nf">munge</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">AnyStr</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">munge</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span><span class="n">AnyStr</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">munge</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">AnyStr</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">PosInt</span><span class="p">:</span>
+</pre></div>
+
+
+<ul>
+<li>通常不推荐复合语句(Compound statements: 多条语句写在同一行)。</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">'blah'</span><span class="p">:</span>
+    <span class="n">do_blah_thing</span><span class="p">()</span>
+<span class="n">do_one</span><span class="p">()</span>
+<span class="n">do_two</span><span class="p">()</span>
+<span class="n">do_three</span><span class="p">()</span>
+
+<span class="c1"># No</span>
+<span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">'blah'</span><span class="p">:</span> <span class="n">do_blah_thing</span><span class="p">()</span>
+<span class="n">do_one</span><span class="p">();</span> <span class="n">do_two</span><span class="p">();</span> <span class="n">do_three</span><span class="p">()</span>
+</pre></div>
+
+
+<ul>
+<li>尽管有时可以在if/for/while 的同一行跟一小段代码，但绝不要跟多个子句，并尽量避免换行。</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># No</span>
+<span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">'blah'</span><span class="p">:</span> <span class="n">do_blah_thing</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span> <span class="n">total</span> <span class="o">+=</span> <span class="n">x</span>
+<span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span> <span class="n">t</span> <span class="o">=</span> <span class="n">delay</span><span class="p">()</span>
+</pre></div>
+
+
+<p>更不是：</p>
+<div class="highlight"><pre><span></span><span class="c1"># No</span>
+<span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">'blah'</span><span class="p">:</span> <span class="n">do_blah_thing</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span> <span class="n">do_non_blah_thing</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span> <span class="n">something</span><span class="p">()</span>
+<span class="k">finally</span><span class="p">:</span> <span class="n">cleanup</span><span class="p">()</span>
+
+<span class="n">do_one</span><span class="p">();</span> <span class="n">do_two</span><span class="p">();</span> <span class="n">do_three</span><span class="p">(</span><span class="nb">long</span><span class="p">,</span> <span class="n">argument</span><span class="p">,</span>
+                             <span class="nb">list</span><span class="p">,</span> <span class="n">like</span><span class="p">,</span> <span class="n">this</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">foo</span> <span class="o">==</span> <span class="s1">'blah'</span><span class="p">:</span> <span class="n">one</span><span class="p">();</span> <span class="n">two</span><span class="p">();</span> <span class="n">three</span><span class="p">()</span>
+</pre></div>
+
+
+<h2 id="_12">注释</h2>
+<p>与代码自相矛盾的注释比没注释更差。修改代码时要优先更新注释！</p>
+<p>注释是完整的句子。如果注释是断句，首字母应该大写，除非它是小写字母开头的标识符(永远不要修改标识符的大小写)。</p>
+<p>如果注释很短，可以省略末尾的句号。注释块通常由一个或多个段落组成。段落由完整的句子构成且每个句子应该以点号(后面要有两个空格)结束，并注意断词和空格。</p>
+<p>非英语国家的程序员请用英语书写你的注释，除非你120%确信代码永远不会被不懂你的语言的人阅读。</p>
+<h4 id="_13">注释块</h4>
+<p>注释块通常应用在代码前，并和这些代码有同样的缩进。每行以 '# '(除非它是注释内的缩进文本，注意#后面有空格)。</p>
+<p>注释块内的段落用仅包含单个 '#' 的行分割。</p>
+<h4 id="_14">行内注释</h4>
+<p>慎用行内注释(Inline Comments) 节俭使用行内注释。 行内注释是和语句在同一行，至少用两个空格和语句分开。行内注释不是必需的，重复罗嗦会使人分心。不要这样做：</p>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># Increment x</span>
+</pre></div>
+
+
+<p>但有时很有必要:</p>
+<div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># Compensate for border</span>
+</pre></div>
+
+
+<h4 id="_15">文档字符串</h4>
+<p>文档字符串的标准参见：<a href="https://www.python.org/dev/peps/pep-0257/">PEP 257</a>。</p>
+<ul>
+<li>
+<p>为所有公共模块、函数、类和方法书写文档字符串。非公开方法不一定有文档字符串，建议有注释(出现在 def 行之后)来描述这个方法做什么。</p>
+</li>
+<li>
+<p>更多参考：<a href="https://www.python.org/dev/peps/pep-0257/">PEP 257 文档字符串约定</a>。注意结尾的 """ 应该单独成行，例如：</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="sd">"""Return a foobang</span>
+<span class="sd">Optional plotz says to frobnicate the bizbaz first.</span>
+<span class="sd">"""</span>
+</pre></div>
+
+
+<ul>
+<li>单行的文档字符串，结尾的 """ 在同一行。</li>
+</ul>
+<h2 id="_16">版本标签</h2>
+<p>版本注记 (Version Bookkeeping)</p>
+<p>如果你必须在源文件中包含git、Subversion、CVS或RCS crud信息，放置在模块的文档字符串之后，任何其他代码之前，上下各用一个空行：</p>
+<div class="highlight"><pre><span></span><span class="n">__version__</span> <span class="o">=</span> <span class="s2">"$Revision$"</span><span class="c1"># $Source$</span>
+</pre></div>
+
+
+<h2 id="_17">命名约定</h2>
+<p>Python库的命名约定有点混乱，不可能完全一致。但依然有些普遍推荐的命名规范的。新的模块和包 (包括第三方的框架) 应该遵循这些标准。对不同风格的已有的库，建议保持内部的一致性。</p>
+<h4 id="_18">最重要的原则</h4>
+<p>用户可见的API命名应遵循使用约定而不是实现。</p>
+<h4 id="_19">描述：命名风格</h4>
+<p>有多种命名风格：</p>
+<ul>
+<li>
+<p>b(单个小写字母)</p>
+</li>
+<li>
+<p>B(单个大写字母)</p>
+</li>
+<li>
+<p>lowercase(小写串)</p>
+</li>
+<li>
+<p>lower_case_with_underscores(带下划线的小写)</p>
+</li>
+<li>
+<p>UPPERCASE(大写串)</p>
+</li>
+<li>
+<p>UPPER_CASE_WITH_UNDERSCORES(带下划线的大写串)</p>
+</li>
+<li>
+<p>CapitalizedWords(首字母大写的单词串或驼峰缩写）</p>
+</li>
+</ul>
+<p>注意: 使用大写缩写时，缩写使用大写字母更好。故 HTTPServerError 比 HttpServerError 更好。</p>
+<ul>
+<li>
+<p>mixedCase(混合大小写，第一个单词是小写)</p>
+</li>
+<li>
+<p>Capitalized_Words_With_Underscores（带下划线，首字母大写，丑陋）</p>
+</li>
+</ul>
+<p>还有一种风格使用短前缀分组名字。这在Python中不常用， 但出于完整性提一下。例如，os.stat()返回的元组有st_mode, st_size, st_mtime等等这样的名字(与POSIX系统调用结构体一致)。</p>
+<p>X11库的所有公开函数以X开头, Python中通常认为是不必要的，因为属性和方法名有对象作前缀，而函数名有模块名为前缀。</p>
+<p>下面讲述首尾有下划线的情况:</p>
+<ul>
+<li>
+<p>_single_leading_underscore:(单前置下划线): 弱内部使用标志。 例如"from M import " 不会导入以下划线开头的对象。</p>
+</li>
+<li>
+<p>single_trailing_underscore_(单后置下划线): 用于避免与 Python关键词的冲突。 例如：</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">Tkinter</span><span class="o">.</span><span class="n">Toplevel</span><span class="p">(</span><span class="n">master</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s1">'ClassName'</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>__double_leading_underscore(双前置下划线): 当用于命名类属性，会触发名字重整。 (在类FooBar中，__boo变成 _FooBar__boo)。</p>
+</li>
+<li>
+<p>__double_leading_and_trailing_underscore__(双前后下划线)：用户名字空间的魔法对象或属性。例如:__init__ , __import__ or __file__，不要自己发明这样的名字。</p>
+</li>
+</ul>
+<h4 id="_20">命名约定规范</h4>
+<ul>
+<li>避免采用的名字</li>
+</ul>
+<p>决不要用字符'l'(小写字母el)，'O'(大写字母oh)，或 'I'(大写字母eye) 作为单个字符的变量名。一些字体中，这些字符不能与数字1和0区别。用'L' 代替'l'时。</p>
+<ul>
+<li>包和模块名</li>
+</ul>
+<p>模块名要简短，全部用小写字母，可使用下划线以提高可读性。包名和模块名类似，但不推荐使用下划线。</p>
+<p>模块名对应到文件名，有些文件系统不区分大小写且截短长名字，在 Unix上不是问题，但当把代码迁移到 Mac、Windows 或 DOS 上时，就可能是个问题。当然随着系统的演进，这个问题已经不是经常出现。</p>
+<p>另外有些模块底层用C或C++ 书写，并有对应的高层Python模块，C/C++模块名有一个前置下划线 (如：_socket)。</p>
+<ul>
+<li>类名</li>
+</ul>
+<p>遵循CapWord。</p>
+<p>接口需要文档化并且可以调用时，可能使用函数的命名规则。</p>
+<p>注意大部分内置的名字是单个单词（或两个），CapWord只适用于异常名称和内置的常量。</p>
+<ul>
+<li>异常名</li>
+</ul>
+<p>如果确实是错误，需要在类名添加后缀 "Error"。</p>
+<ul>
+<li>全局变量名</li>
+</ul>
+<p>变量尽量只用于模块内部，约定类似函数。</p>
+<p>对设计为通过 "from M import " 来使用的模块，应采用 __all__ 机制来防止导入全局变量；或者为全局变量加一个前置下划线。</p>
+<ul>
+<li>函数名</li>
+</ul>
+<p>函数名应该为小写，必要时可用下划线分隔单词以增加可读性。 mixedCase(混合大小写)仅被允许用于兼容性考虑(如: threading.py)。</p>
+<ul>
+<li>函数和方法的参数</li>
+</ul>
+<p>实例方法第一个参数是 'self'。</p>
+<p>类方法第一个参数是 'cls'。</p>
+<p>如果函数的参数名与保留关键字冲突，通常在参数名后加一个下划线。</p>
+<ul>
+<li>方法名和实例变量</li>
+</ul>
+<p>同函数命名规则。</p>
+<p>非公开方法和实例变量增加一个前置下划线。</p>
+<p>为避免与子类命名冲突，采用两个前置下划线来触发重整。类Foo属性名为__a， 不能以 Foo.__a访问。(执著的用户还是可以通过Foo._Foo__a。) 通常双前置下划线仅被用来避免与基类的属性发生命名冲突。</p>
+<ul>
+<li>常量</li>
+</ul>
+<p>常量通常在模块级定义,由大写字母用下划线分隔组成。比如括MAX_OVERFLOW和TOTAL。</p>
+<ul>
+<li>继承设计</li>
+</ul>
+<p>考虑类的方法和实例变量(统称为属性)是否公开。如果有疑问，选择不公开；把其改为公开比把公开属性改为非公开要容易。</p>
+<p>公开属性可供所有人使用，并通常向后兼容。非公开属性不给第三方使用、可变甚至被移除。</p>
+<p>这里不使用术语"private"， Python中没有属性是真正私有的。</p>
+<p>另一类属性是子类API(在其他语言中通常称为 "protected")。 一些类被设计为基类，可以扩展和修改。</p>
+<p>谨记这些Python指南：</p>
+<ol>
+<li>
+<p>公开属性应该没有前导下划线。</p>
+</li>
+<li>
+<p>如果公开属性名和保留关键字冲突，可以添加后置下划线</p>
+</li>
+<li>
+<p>简单的公开数据属性，最好只公开属性名，没有复杂的访问/修改方法，python的Property提供了很好的封装方法。 d.如果不希望子类使用的属性，考虑用两个前置下划线(没有后置下划线)命名。</p>
+</li>
+</ol>
+<h4 id="_21">公共和内部接口</h4>
+<p>任何向后兼容的保证只适用于公共接口。</p>
+<p>文档化的接口通常是公共的，除非明说明是临时的或为内部接口、其他所有接口默认是内部的。</p>
+<p>为了更好地支持内省，模块要在__all__属性列出公共API。</p>
+<p>内部接口要有前置下划线。</p>
+<p>如果命名空间(包、模块或类)是内部的，里面的接口也是内部的。</p>
+<p>导入名称应视为实现细节。其他模块不能间接访名字，除非在模块的API文档中明确记载，如os.path中或包的__init__暴露了子模块。</p>
+<h2 id="_22">编程建议</h2>
+<ul>
+<li>考虑多种Python实现(PyPy, Jython, IronPython,Pyrex, Psyco, 等等)。</li>
+</ul>
+<p>例如，CPython对a+=b或a=a+b等语句有高效的实现，但在Jython中运行很慢，尽量改用_.join()。_</p>
+<ul>
+<li>None比较用'is'或'is not'，不要用等号。</li>
+</ul>
+<p>注意"if x is not None" 与"if x" 的区别。</p>
+<ul>
+<li>用"is not"代替"not ... is"。前者的可读性更好。</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="k">if</span> <span class="n">foo</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+
+<span class="c1"># No</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">foo</span> <span class="ow">is</span> <span class="bp">None</span>
+</pre></div>
+
+
+<ul>
+<li>使用基于类的异常。</li>
+</ul>
+<p>比较排序操作最好是实现所有六个操作，而不是代码中实现比较逻辑。functools.total_ordering()装饰符可以生成缺失的比较方法。</p>
+<div class="highlight"><pre><span></span><span class="fm">__eq__</span><span class="err">，</span><span class="fm">__ne__</span><span class="err">，</span><span class="fm">__lt__</span><span class="err">，</span><span class="fm">__lt__</span><span class="err">，</span><span class="fm">__gt__</span><span class="err">，</span><span class="n">____</span><span class="err">）</span>
+</pre></div>
+
+
+<p><a href="https://www.python.org/dev/peps/pep-0207/">PEP207 比较标准</a>表明反射规则由Python完成。因此解释器可能会交换参数的位置，比如替换y &gt; x为x &lt; y，所以有必要实现这5种方法。</p>
+<ul>
+<li>使用函数定义def代替lambda赋值给标识符：</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
+
+<span class="c1"># No</span>
+<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
+</pre></div>
+
+
+<p>前者更适合回调和字符串表示。</p>
+<ul>
+<li>异常类继承自Exception，而不是BaseException。</li>
+</ul>
+<p>源于异常，而不是BaseException例外。从BaseException直接继承的例外情况追赶他们几乎总是错误的事情做保留。</p>
+<p>要设计基于层次的异常，捕捉到需要的异常，而不是异常引发的位置。能回答：“出了什么问题？”，而不是仅仅指出“问题发生”(更多参考：<a href="https://www.python.org/dev/peps/pep-3151">PEP3151 重构OS和IO异常层次</a>）</p>
+<ul>
+<li>适当使用异常链。在Python3中"raise X from Y"明确表示更换且保留了原来的traceback。</li>
+</ul>
+<p>替换内部异常(在Python2: "raise X"或"raise X from None")时，确保相关细节转移到新的异常（如转换KeyError为AttributeError保存属性名，或在新的异常中嵌入原始异常)。</p>
+<ul>
+<li>Python2中用" raise ValueError('message')"代替"raise ValueError, 'message'"</li>
+</ul>
+<p>后者不兼容Python3语法。前者续行方便。</p>
+<ul>
+<li>捕获异常时尽量指明具体异常，而不是空"except:"子句。比如：</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">platform_specific_module</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">platform_specific_module</span> <span class="o">=</span> <span class="bp">None</span>
+</pre></div>
+
+
+<p>空"except:"子句(相当于except Exception)会捕捉SystemExit和KeyboardInterrupt异常，难以用Control-C中断程序，并可掩盖其他问题。如果 你捕捉信号错误之外所有的异常，使用"except Exception"。</p>
+<p>空"except:"子句适用的情况两种情况：</p>
+<blockquote>
+<p>a, 打印出或记录了traceback，至少让用户将知道已发生错误。 b, 代码需要做一些清理工作，并用 raise转发了异常。这样try...finally可以捕捉到它。</p>
+</blockquote>
+<ul>
+<li>Python 2.6以后建议用as显示绑定异常名：</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">process_data</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="n">DataProcessingFailedError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span>
+</pre></div>
+
+
+<p>这样才能兼容Python3语法并避免歧义。</p>
+<ul>
+<li>
+<p>捕捉操作系统错误时，建议使用Python 3.3引入显式异常层次，支持内省errno值。</p>
+</li>
+<li>
+<p>此外所有try/except子句的代码要尽可的少，以免屏蔽其他的错误。</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">collection</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">key_not_found</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">handle_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<span class="c1"># No</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># 太泛了!</span>
+    <span class="k">return</span> <span class="n">handle_value</span><span class="p">(</span><span class="n">collection</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="c1"># 会捕捉到handle_value()中的KeyError</span>
+    <span class="k">return</span> <span class="n">key_not_found</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>本地资源建议使用with语句，以确保即时清理。当然try / finally语句也是可以接受的。</p>
+</li>
+<li>
+<p>上下文管理器在做获取和释放资源之外的事情时，应通过独立的函数或方法。例如：</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="k">with</span> <span class="n">conn</span><span class="o">.</span><span class="n">begin_transaction</span><span class="p">():</span>
+    <span class="n">do_stuff_in_transaction</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
+
+<span class="c1"># No</span>
+<span class="k">with</span> <span class="n">conn</span><span class="p">:</span>
+    <span class="n">do_stuff_in_transaction</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
+</pre></div>
+
+
+<p>后者指明enter和exit方法。</p>
+<ul>
+<li>函数或者方法在没有返回时要明确返回None。</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Nonedef</span> <span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="c1"># Nodef foo(x):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="k">def</span> <span class="nf">bar</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>使用字符串方法而不是string模块。</li>
+</ul>
+<p>python 2.0以后字符串方法总是更快，且Unicode字符串相同的API。</p>
+<ul>
+<li>使用使用 <em>.startswith()和</em>.endswith()代替字符串切片来检查前缀和后缀。and</li>
+</ul>
+<p>startswith()和endswith更简洁，利于减少错误。例如：</p>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="k">if</span> <span class="n">foo</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'bar'</span><span class="p">):</span>
+
+<span class="c1"># No</span>
+<span class="k">if</span> <span class="n">foo</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s1">'bar'</span><span class="p">:</span>
+</pre></div>
+
+
+<ul>
+<li>使用isinstance()代替对象类型的比较：</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+
+<span class="c1"># No</span>
+<span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+</pre></div>
+
+
+<p>检查是否是字符串时，注意Python 2中str和unicode有公共的基类:</p>
+<p>if isinstance(obj, basestring): 在 Python 2.2 中，types 模块为此定义了 StringTypes 类型，例如：</p>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
+</pre></div>
+
+
+<p>Python3中Unicode和basestring的不再存在(只有str)和字节对象不再是字符串(是整数序列)</p>
+<ul>
+<li>对序列(字符串、列表 、元组), 空序列为false:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">seq</span><span class="p">:</span>
+   <span class="k">pass</span>
+<span class="k">if</span> <span class="n">seq</span><span class="p">:</span>
+   <span class="k">pass</span>
+
+<span class="c1"># No</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+   <span class="k">pass</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+   <span class="k">pass</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>字符串后面不要有大量拖尾空格。</p>
+</li>
+<li>
+<p>不要用 == 进行布尔比较</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Yes</span>
+<span class="k">if</span> <span class="n">greeting</span><span class="p">::</span>
+   <span class="k">pass</span>
+
+<span class="c1"># No</span>
+<span class="k">if</span> <span class="n">greeting</span> <span class="o">==</span> <span class="bp">True</span>
+   <span class="k">pass</span>
+<span class="k">if</span> <span class="n">greeting</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span> <span class="c1"># Worse</span>
+   <span class="k">pass</span>
+</pre></div>
+
+
+<ul>
+<li>Python标准库不使用的功能注释，这块有待用户去发现和体验有用的注释风格。下面有些第三方的建议(略)。</li>
+</ul>
+<h2 id="_23">参考资料</h2>
+<ul>
+<li><a href="https://github.com/china-testing/python-api-tesing/blob/master/books.md">本文相关书籍下载</a></li>
+<li>python测试等IT技术支持qq群： 144081101(后期会录制视频存在该群群文件) 591302926 567351477 </li>
+<li>道家技术-手相手诊看相中医等钉钉群21734177 qq群：391441566 184175668 338228106 看手相、面相、舌相、抽签、体质识别。服务费50元每人次起。请联系钉钉或者微信pythontesting</li>
+<li><a href="https://china-testing.github.io/testing_tools_mobile.html">本文最新版本地址</a></li>
+<li><a href="https://github.com/china-testing/python-api-tesing">本文涉及的python测试开发库</a> 谢谢点赞！</li>
+<li><a href="https://china-testing.github.io/python_pep8.html">接口自动化性能测试线上培训大纲</a></li>
+<li><a href="https://www.python.org/dev/peps/pep-0008/">PEP 8 - Style Guide for Python Code</a></li>
+</ul>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://china-testing.github.io/testing_training.html">自动化性能接口测试线上及深圳培训与项目实战 qq群：144081101 591302926</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">pandas数据分析scrapy爬虫 521070358 Py人工智能pandas-opencv 6089740</a></li>
+                            <li><a href="http://blog.sciencenet.cn/blog-2604609-1112306.html">中医解梦看相八字算命qq群 391441566 csdn书籍下载-python爬虫 437355848</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org/">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+
+<div style="position: fixed; inset: 0px; z-index: 9999; display: none; align-items: center; justify-content: center;"></div><div id="samantha-toast-container"></div><div style="position: fixed; inset: 0px; z-index: 9999; display: none; align-items: center; justify-content: center;"></div><div style="position: fixed; inset: 0px; z-index: 9999; display: none; align-items: center; justify-content: center;"></div><doubao-ai-csui id="24ba7349c88048248b1d05da030a2c7a" aria-label="flow-ai-assistant" data-host-id="34f9f291-c410-454e-ba28-121fc9876857" class="flow-ai-select-bar-enabled" aria-description="flow-ai-select-bar-enabled" style="z-index: unset; display: block;"></doubao-ai-csui></body><div id="immersive-translate-popup" style="all: initial"></div></html>
