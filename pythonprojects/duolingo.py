@@ -19,6 +19,7 @@ for i in range(100):
     t.sleep(0.05)
     pg.press("enter")
     t.sleep(0.1)
+
     for a in range(14):
         pg.press("2")
         pg.press("enter")
@@ -27,6 +28,4 @@ for i in range(100):
         t.sleep(0.1)
     t.sleep(10)
     pg.press("enter")
-    for _count in range(20):
-        pg.press("up")
     t.sleep(0.1)
