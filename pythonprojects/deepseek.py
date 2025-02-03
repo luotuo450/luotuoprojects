@@ -2,7 +2,7 @@ import requests
 
 host = "xxx"
 port = "xxx"
-url = f"http://127.0.0.1:11434/api/chat"
+url = f"http://127.0.0.1:11434/api/chat"  # 更改成你的接口地址
 model = "deepseek-r1:1.5b"
 headers = {"Content-Type": "application/json"}
 user = 0
