@@ -2,7 +2,7 @@ import pyautogui as pg
 import time as t
 
 t.sleep(3)
-for i in range(100):
+for i in range(1000):
     pg.click(x=830, y=363)
     t.sleep(3)
     for a in range(15):
@@ -19,7 +19,6 @@ for i in range(100):
     t.sleep(0.05)
     pg.press("enter")
     t.sleep(0.1)
-
     for a in range(14):
         pg.press("2")
         pg.press("enter")
