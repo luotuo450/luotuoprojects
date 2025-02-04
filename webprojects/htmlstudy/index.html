@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>docunment</title>
+  </head>
+
+  <body>
+    <div class="todo">
+      <div class="title">Todo List</div>
+      <div class="todo-form">
+        <input type="text" placeholder="请输入待办事项" class="todo-input" />
+        <div class="addbutton">添加待办</div>
+      </div>
+      <div class="item completed">
+        <div>
+          <input type="checkbox" />
+          <span class="name">吃饭</span>
+        </div>
+        <div class="del">删除</div>
+      </div>
+      <div class="item">
+        <div>
+          <input type="checkbox" />
+          <span class="name">吃饭</span>
+        </div>
+        <div class="del">删除</div>
+      </div>
+      <div class="item">
+        <div>
+          <input type="checkbox" />
+          <span class="name">吃饭</span>
+        </div>
+        <div class="del">删除</div>
+      </div>
+    </div>
+    <style>
+      .completed {
+        text-decoration: line-through;
+        /*设置文本底部添加删除线*/
+        opacity: 0.5;
+      }
+      .del {
+        color: rgb(196, 32, 32);
+        font-size: 13px;
+      }
+      .item {
+        align-items: center;
+        /*设置垂直方向居中*/
+        justify-content: space-between;
+        display: flex;
+        /*设置display为flex，使元素在同一行*/
+        margin: 8px auto;
+        padding: 16px;
+        /*设置内边距为10px*/
+        box-sizing: border-box;
+        /*设置盒子模型为border-box,以保证加上内边距之后盒子高度不变*/
+        border-radius: 20px;
+        /*设置圆角为20px*/
+        box-shadow: 0px 8px 20px rgba(149, 157, 165, 0.2);
+        /*设置阴影*/
+        width: 90%;
+        /*设置宽度为90%*/
+      }
+
+      body {
+        /*设置背景颜色为渐变色*/
+        background: linear-gradient(
+          to right,
+          rgba(195, 0, 255, 0.429),
+          rgba(0, 0, 255, 0.823)
+        );
+      }
+
+      .todo {
+        width: 98%;
+        /*设置宽度为整个网页的98%*/
+        height: 500px;
+        /*设置高度为500px*/
+        background-color: white;
+        /*设置背景颜色为白色*/
+        border-radius: 20px;
+        /*设置圆角为20px*/
+        margin-top: 20px;
+        /*设置上边距为20px*/
+        margin-left: 1%;
+        padding-top: 20px;
+        /*设置顶部内边距为20px*/
+        box-sizing: border-box;
+        /*设置盒子模型为border-box,以保证加上内边距之后盒子高度不变*/
+      }
+
+      .title {
+        text-align: center;
+        /*设置标题居中*/
+        font-size: 30px;
+        /*设置字体大小为30px*/
+        font-weight: 700;
+        /*设置字体字重*/
+        /*如果给这个元素加上外边距，会遇到margin折叠的问题，所以这里要给父元素设置padding*/
+      }
+
+      .todo-form {
+        margin-bottom: 20px;
+        display: flex;
+        /*设置display为flex，使输入框和按钮在同一行*/
+        margin-top: 20px;
+        /*设置上边距为20px*/
+        /*居中*/
+        justify-content: center;
+        /*设置主轴方向居中*/
+        align-items: center;
+        /*设置交叉轴方向居中*/
+      }
+
+      .todo-input {
+        border: 2px solid #dfe1e5;
+        /*设置边框宽度，颜色，solid为实线*/
+        outline: none;
+        /*去掉输入框的默认边框*/
+        width: 60%;
+        height: 50px;
+        border-radius: 20px 0 0 20px;
+        /*设置左边框圆角为20px，右边框圆角为0*/
+        padding-left: 15px;
+      }
+
+      .addbutton {
+        width: 100px;
+        height: 55px;
+        border-radius: 0 20px 20px 0;
+        /*设置右边框圆角为20px，左边框圆角为0*/
+        background: linear-gradient(
+          to right,
+          rgba(195, 0, 255, 0.429),
+          rgba(0, 0, 255, 0.823)
+        );
+        color: #ffff;
+        /*设置文字颜色为白色*/
+        font-size: 15px;
+        text-align: center;
+        /*设置文字居中*/
+        line-height: 55px;
+        /*设置行高为55px*/
+        cursor: pointer;
+        /*设置鼠标指针为手型*/
+        user-select: none;
+        /*禁止选中文本*/
+      }
+    </style>
+  </body>
+</html>
